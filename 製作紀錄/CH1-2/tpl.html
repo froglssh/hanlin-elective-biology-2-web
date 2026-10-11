@@ -614,7 +614,7 @@ function renderQ(){
   const poolBox=(cols,cf)=>`<aside class="pool" style="--pc:${cols};${cf?'--cf:'+cf:''}"><h3>候選（${pool.length}）｜點選後點格子，或直接拖放</h3><div class="grid" id="pool" data-pool="1">${pool.map(cardHTML).join('')}</div></aside>`;
   if(s.kind==='label'){
     const M=Q_SLOTS[s.fig];
-    const sl=M.slots.map(x=>{const cid=d.place[x.id],cls=['slot',cid?'filled':'',d.bad.includes(x.id)?'bad':'',locked&&cid&&!r.revealed?'good':''].join(' ');
+    const sl=M.slots.map(x=>{const cid=d.place[x.id],cls=['slot',cid?'filled':'',s.wrap?'wrapok':'',d.bad.includes(x.id)?'bad':'',locked&&cid&&!r.revealed?'good':''].join(' ');
       return `<div class="${cls}" data-slot="${x.id}" tabindex="0" role="button" aria-label="第 ${M.slots.indexOf(x)+1} 格${cid?'：'+esc(CARDOF(s,cid)):'（空格）'}" style="left:${x.x}%;top:${x.y}%;width:${x.w}%;height:${x.h}%">${cid?esc(CARDOF(s,cid)):`<span class="n">${M.slots.indexOf(x)+1}</span>`}</div>`}).join('');
     b.innerHTML=`<div class="lay fig"><div class="figpane" id="figpane"><div class="figwrap" id="figwrap" style="--fk:${s.fk}"><img src="${ASSETS[s.fig]}" alt="${esc(s.title)}（標籤已遮住）" id="figimg">${sl}<button class="zoombtn" id="zoombtn" type="button">放大看圖</button></div></div>${poolBox(s.pc,'1rem')}</div>`;
     el('zoombtn').onclick=()=>zoom(ASSETS[s.fig],s.title);

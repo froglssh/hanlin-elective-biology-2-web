@@ -402,7 +402,7 @@ const STAGES=[
   stem:'依現代實驗設計的角度，圖 1-1 中何者是「對照組」？',hint:'對照組＝不施加處理、保持原本觀察狀態的一組。',
   opts:[OPT('A','b 組（瓶口蓋緊蓋子）',0),OPT('B','c 組（瓶口覆蓋紗布）',0),OPT('C','a 組（瓶口敞開）',1),OPT('D','a、b、c 三組都是對照組',0)],
   ex:'a 組瓶口敞開，是雷迪原本觀察的狀態，作為對照；b、c 是改變瓶口處理的實驗組。'},
- {id:'q4',kind:'label',fig:'L2',fk:2.5,wrap:1,pc:2,tag:'T2',title:'圖 1-2 尼丹與司巴蘭贊尼：貼回實驗步驟與結果',src:'課本 P11 圖 1-2',
+ {id:'q4',kind:'label',fig:'L2',fk:2.05,wrap:1,pc:2,tag:'T2',title:'圖 1-2 尼丹與司巴蘭贊尼：貼回實驗步驟與結果',src:'課本 P11 圖 1-2',
   stem:'兩人的實驗步驟與結果被遮住了，請貼回正確位置（上排尼丹、下排司巴蘭贊尼）。',hint:'尼丹是「冷卻後再封口」，司巴蘭贊尼是「煮沸後立刻封口」。',
   cards:[['n1','瓶口開放，室溫冷卻'],['n2','軟木塞封口'],['n3','混濁，長出微生物'],['s1','立刻燒融封口'],['s2','澄清，不長微生物'],['x1','加入乾草浸液'],['x2','放入冰水冷卻']],
   ex:'尼丹讓肉汁在開放的瓶口冷卻，空氣中的微生物落入而繁殖；司巴蘭贊尼立刻封口，肉汁保持澄清，支持生源說。'},
@@ -598,7 +598,7 @@ function renderQ(){
   const poolBox=(cols,cf)=>`<aside class="pool" style="--pc:${cols};${cf?'--cf:'+cf:''}"><h3>候選（${pool.length}）｜點選後點格子，或直接拖放</h3><div class="grid" id="pool" data-pool="1">${pool.map(cardHTML).join('')}</div></aside>`;
   if(s.kind==='label'){
     const M=Q_SLOTS[s.fig];
-    const sl=M.slots.map(x=>{const cid=d.place[x.id],cls=['slot',cid?'filled':'',d.bad.includes(x.id)?'bad':'',locked&&cid&&!r.revealed?'good':''].join(' ');
+    const sl=M.slots.map(x=>{const cid=d.place[x.id],cls=['slot',cid?'filled':'',s.wrap?'wrapok':'',d.bad.includes(x.id)?'bad':'',locked&&cid&&!r.revealed?'good':''].join(' ');
       return `<div class="${cls}" data-slot="${x.id}" tabindex="0" role="button" aria-label="第 ${M.slots.indexOf(x)+1} 格${cid?'：'+esc(CARDOF(s,cid)):'（空格）'}" style="left:${x.x}%;top:${x.y}%;width:${x.w}%;height:${x.h}%">${cid?esc(CARDOF(s,cid)):`<span class="n">${M.slots.indexOf(x)+1}</span>`}</div>`}).join('');
     b.innerHTML=`<div class="lay fig"><div class="figpane" id="figpane"><div class="figwrap" id="figwrap" style="--fk:${s.fk}"><img src="${ASSETS[s.fig]}" alt="${esc(s.title)}（標籤已遮住）" id="figimg">${sl}<button class="zoombtn" id="zoombtn" type="button">放大看圖</button></div></div>${poolBox(s.pc,'1rem')}</div>`;
     el('zoombtn').onclick=()=>zoom(ASSETS[s.fig],s.title);
