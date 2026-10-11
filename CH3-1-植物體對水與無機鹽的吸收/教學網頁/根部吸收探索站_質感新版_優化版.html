@@ -141,7 +141,7 @@ body.fsmode #lmenu,body.fsmode .top{display:none}
 .figpane{min-height:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative}
 .figwrap{position:relative;container-type:inline-size;background:#fff;border:1px solid var(--line);border-radius:6px}
 .figwrap img{display:block;width:100%;height:100%;cursor:zoom-in}
-.zoombtn{position:absolute;top:4px;right:4px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1px 8px;font-size:.78rem;z-index:3}
+.zoombtn{align-self:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:4px 12px;font-size:.85rem}
 .slot{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed var(--accent);border-radius:7px;background:rgba(53,79,135,.10);line-height:1.15;font-weight:700;overflow:hidden;padding:1px;font-size:max(11px,calc(var(--fk,2.5)*1cqw));color:var(--ink);cursor:pointer;word-break:break-all}
 .slot.filled{overflow:visible;white-space:nowrap;word-break:keep-all}
 .slot.filled.wrapok{white-space:normal;overflow:hidden;word-break:break-all}
@@ -591,7 +591,7 @@ function renderQ(){
     const M=Q_SLOTS[s.fig];
     const sl=M.slots.map(x=>{const cid=d.place[x.id],cls=['slot',cid?'filled':'',s.wrap?'wrapok':'',d.bad.includes(x.id)?'bad':'',locked&&cid&&!r.revealed?'good':''].join(' ');
       return `<div class="${cls}" data-slot="${x.id}" tabindex="0" role="button" aria-label="第 ${M.slots.indexOf(x)+1} 格${cid?'：'+esc(CARDOF(s,cid)):'（空格）'}" style="left:${x.x}%;top:${x.y}%;width:${x.w}%;height:${x.h}%">${cid?esc(CARDOF(s,cid)):`<span class="n">${M.slots.indexOf(x)+1}</span>`}</div>`}).join('');
-    b.innerHTML=`<div class="lay fig"><div class="figpane" id="figpane"><div class="figwrap" id="figwrap" style="--fk:${s.fk}"><img src="${ASSETS[s.fig]}" alt="${esc(s.title)}（標籤已遮住）" id="figimg">${sl}<button class="zoombtn" id="zoombtn" type="button">放大看圖</button></div></div>${poolBox(s.pc,'1rem')}</div>`;
+    b.innerHTML=`<div class="lay fig"><div class="figpane" id="figpane"><div class="figwrap" id="figwrap" style="--fk:${s.fk}"><img src="${ASSETS[s.fig]}" alt="${esc(s.title)}（標籤已遮住）" id="figimg">${sl}</div></div>${poolBox(s.pc,'1rem').replace('<h3>','<button class="zoombtn" id="zoombtn" type="button">🔍 放大看圖（原圖已遮標籤）</button><h3>')}</div>`;
     el('zoombtn').onclick=()=>zoom(ASSETS[s.fig],s.title);
   }else if(s.kind==='bucket'){
     const bk=s.buckets.map(bu=>`<div class="bkt"><h3>${esc(bu.name)}</h3><div class="cells" style="--bc:${s.bc}">${Array.from({length:bu.cap},(_,i)=>slotHTML(bu.id+'_'+i,bu.name)).join('')}</div></div>`).join('');

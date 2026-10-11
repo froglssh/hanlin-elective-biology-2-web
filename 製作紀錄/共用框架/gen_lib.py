@@ -52,6 +52,7 @@ class Gen:
             dr.rounded_rectangle([x0-3,y0-3,x1+3,y1+3],radius=10,fill=(226,224,214),outline=(150,146,130),width=2)
         wh=s.save(im,name,maxw); out=[]
         for it in items:
+            if it.get('nos'): continue
             m=it['_m']
             if it.get('s'): sx0,sy0,sx1,sy1=it['s']
             else:
