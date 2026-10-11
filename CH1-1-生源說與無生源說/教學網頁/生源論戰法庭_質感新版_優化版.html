@@ -564,7 +564,7 @@ function slotsOf(s){
   return [];
 }
 function answerMap(s){
-  if(s.kind==='label')return Object.fromEntries(s.cards.filter(c=>!c[0].startsWith('x')).map(c=>[c[0],c[0]]));
+  if(s.kind==='label')return Object.fromEntries(s.cards.filter(c=>!/^x\d+$/.test(c[0])).map(c=>[c[0],c[0]]));
   if(s.kind==='order')return Object.fromEntries(s.items.map((it,i)=>['p'+(i+1),it[0]]));
   return {};
 }

@@ -10,13 +10,15 @@ def build(cfg):
         im=Image.open(io.BytesIO(base64.b64decode(img[k].split(',',1)[1]))).convert('RGB'); b=io.BytesIO(); im.save(b,'WEBP',quality=85)
         assets[k]='data:image/webp;base64,'+base64.b64encode(b.getvalue()).decode()
     slides={}; mp={}
+    nsl=sum(1 for k in img if re.fullmatch(r'[A-Za-z]*0*(\d+)\D+0*(\d+)',k))
+    SW,SH,SQ=(1024,576,74) if nsl<=100 else (960,540,62)
     for k,v in img.items():
         m=re.fullmatch(r'[A-Za-z]*0*(\d+)\D+0*(\d+)',k)
         if not m: continue
         im=Image.open(io.BytesIO(base64.b64decode(v.split(',',1)[1])))
         if abs(im.width/im.height-16/9)>0.05: continue
         nk='s%02d_%02d'%(int(m.group(1)),int(m.group(2))); mp[k]=nk
-        im=im.convert('RGB').resize((1024,576),Image.LANCZOS); b=io.BytesIO(); im.save(b,'WEBP',quality=74,method=6)
+        im=im.convert('RGB').resize((SW,SH),Image.LANCZOS); b=io.BytesIO(); im.save(b,'WEBP',quality=SQ,method=6)
         slides[nk]='data:image/webp;base64,'+base64.b64encode(b.getvalue()).decode()
     scap={}
     dm=re.search(r'const DECK\s*=\s*(\[.*?\]);\s*\n',old,re.S)
