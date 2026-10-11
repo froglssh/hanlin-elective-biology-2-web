@@ -1,0 +1,31 @@
+# macOS System Files
+.DS_Store
+._*
+.Trashes
+
+# Ignore large media and raw folders
+*.mp4
+*.mov
+*.avi
+*.pdf
+*.doc
+*.docx
+*.pptx
+*.ppt
+*.zip
+*.rar
+*.psd
+*_backup_orig.html
+
+探討活動*/教學影片/
+教學影片/
+**/新版製作紀錄/
+新版製作紀錄/
+*/素材/
+115上高中選修生物(Ⅱ)課本-PDF檔/
+115上高中選修生物(Ⅱ)課本-word檔/
+
+# Node / Temp
+node_modules/
+/private/tmp/
+*.log
