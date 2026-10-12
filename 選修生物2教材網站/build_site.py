@@ -177,6 +177,7 @@ def nav(current_n=None):
     for c in CHAPTERS:
         cls = ' class="cur"' if current_n == c['n'] else ''
         items.append(f'<a href="chapter{c["n"]}.html"{cls}>第 {c["n"]} 章</a>')
+    items.append('<a href="../選生二網頁＿new/index.html" class="version-switch" title="切換至第二版優化版" style="margin-left:auto;color:#059669;font-weight:700;text-decoration:none;">✨ 第二版優化版 →</a>')
     return ''.join(items)
 
 def chstyle(c):
@@ -210,6 +211,10 @@ def build_index():
     </g>
   </svg>
   <div class="hero-in">
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+      <span style="display:inline-flex;align-items:center;gap:6px;background:#e2e8f0;color:#334155;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:700;">第一版・原始版</span>
+      <a href="../選生二網頁＿new/index.html" style="display:inline-flex;align-items:center;gap:6px;background:#ecfdf5;color:#065f46;border:1.5px solid #34d399;border-radius:999px;padding:5px 16px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 2px 6px rgba(5,150,105,0.15);">✨ 前往第二版（質感優化版：288dpi 超清圖＋貼標籤練習＋原題詳解） →</a>
+    </div>
     <img class="hero-logo" src="img/hanlin-logo-wide.png" alt="翰林出版 HAN LIN PUBLISHING" width="1240" height="324">
     <div class="hero-rule"><span></span><em>自然科學領域　加深加廣選修</em><span></span></div>
     <h1>選修生物（Ⅱ）<span>互動教學網站</span></h1>
@@ -283,6 +288,10 @@ def build_chapter(c):
 <header class="ch-hero">
   <div class="ch-hero-in">
     <div class="ch-hero-text">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:#e2e8f0;color:#334155;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:700;">第一版第 {n} 章</span>
+        <a href="../選生二網頁＿new/chapter{n}.html" style="display:inline-flex;align-items:center;gap:6px;background:#ecfdf5;color:#065f46;border:1.5px solid #34d399;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:700;text-decoration:none;">✨ 切換至第二版第 {n} 章優化版 →</a>
+      </div>
       <div class="ch-kicker">CHAPTER 0{n} · {c['en']}</div>
       <h1><span class="big">{n}</span><span class="t">第 {n} 章<br><strong>{c['title']}</strong></span></h1>
       <p class="lead">{E(c['lead'])}</p>
