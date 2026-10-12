@@ -207,8 +207,7 @@ HEAD = '''<!doctype html>
 FOOT = '''<footer class="foot">
   <div class="foot-in">
     <img src="img/hanlin-logo.png" alt="" width="34" height="34">
-    <p>內容整理自翰林版高中《選修生物Ⅱ（全）》課本，簡介依課文重點改寫，圖片取自課本，僅供課堂教學使用。<br>本站為<b>【第二版・質感優化版】</b>，升級 288dpi 課本圖、互動標籤練習與 PPT 原題詳解。<br>各節互動教學網頁由臺北市立麗山高中生物科自編製作，發布於 GitHub Pages；教學影片存放於 Google 雲端硬碟。<br>
-    <a href="../選修生物2教材網站/index.html" style="color:#059669;font-weight:700;text-decoration:underline;">⇄ 切換檢視第一版（原始對照版）</a></p>
+    <p>內容整理自翰林版高中《選修生物Ⅱ（全）》課本，簡介依課文重點改寫，圖片取自課本，僅供課堂教學使用。<br>本站為<b>【第二版・質感優化版】</b>，升級 288dpi 課本圖、互動標籤練習與 PPT 原題詳解。<br>各節互動教學網頁由臺北市立麗山高中生物科自編製作，發布於 GitHub Pages；教學影片存放於 Google 雲端硬碟。</p>
   </div>
 </footer>
 <div class="lightbox" id="lightbox" hidden>
@@ -225,7 +224,6 @@ def nav(current_n=None):
     for c in CHAPTERS:
         cls = ' class="cur"' if current_n == c['n'] else ''
         items.append(f'<a href="chapter{c["n"]}.html"{cls}>第 {c["n"]} 章</a>')
-    items.append('<a href="../選修生物2教材網站/index.html" class="version-switch" title="切換至第一版對照" style="margin-left:auto;">' + ICON_SWITCH + ' 第一版原版</a>')
     return ''.join(items)
 
 def chstyle(c):
@@ -259,9 +257,8 @@ def build_index():
     </g>
   </svg>
   <div class="hero-in">
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+    <div style="display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
       <span class="version-badge">''' + ICON_SPARKLE + ''' 第二版・質感優化版</span>
-      <a class="version-switch" href="../選修生物2教材網站/index.html">''' + ICON_SWITCH + ''' 切換至第一版（原版網頁對照）</a>
     </div>
     <img class="hero-logo" src="img/hanlin-logo-wide.png" alt="翰林出版 HAN LIN PUBLISHING" width="1240" height="324">
     <div class="hero-rule"><span></span><em>自然科學領域　加深加廣選修</em><span></span></div>
@@ -336,9 +333,8 @@ def build_chapter(c):
 <header class="ch-hero">
   <div class="ch-hero-in">
     <div class="ch-hero-text">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;margin-bottom:8px;">
         <span class="version-badge">''' + ICON_SPARKLE + f''' 第 {n} 章・第二版優化版</span>
-        <a class="version-switch" href="../選修生物2教材網站/chapter{n}.html">''' + ICON_SWITCH + f''' 第一版第 {n} 章對照</a>
       </div>
       <div class="ch-kicker">CHAPTER 0{n} · {c['en']}</div>
       <h1><span class="big">{n}</span><span class="t">第 {n} 章<br><strong>{c['title']}</strong></span></h1>

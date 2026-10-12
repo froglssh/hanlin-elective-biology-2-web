@@ -3,221 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>翰林版 選修生物（Ⅱ）互動教學網站總門戶</title>
-<link rel="icon" href="選生二網頁＿new/img/hanlin-logo.png">
+<title>翰林版 選修生物（Ⅱ）互動教學網站</title>
+<meta http-equiv="refresh" content="0; url=選修生物2教材網站/">
+<link rel="icon" href="選修生物2教材網站/img/hanlin-logo.png">
+<script>
+  window.location.replace("選修生物2教材網站/");
+</script>
 <style>
-  :root {
-    --primary: #059669;
-    --primary-dark: #047857;
-    --primary-light: #ecfdf5;
-    --slate-900: #0f172a;
-    --slate-600: #475569;
-    --slate-200: #e2e8f0;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    padding: 40px 20px;
+    margin: 0;
+    padding: 60px 20px;
     font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Segoe UI", Roboto, sans-serif;
     background: #f8fafc;
-    color: var(--slate-900);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-  .portal-box {
-    max-width: 640px;
-    width: 100%;
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 36px 32px;
-    box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08);
-    border: 1px solid var(--slate-200);
+    color: #0f172a;
     text-align: center;
   }
-  .logo {
-    width: 52px;
-    height: 52px;
-    margin-bottom: 12px;
-  }
-  .kicker {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--primary);
-    text-transform: uppercase;
-    margin-bottom: 6px;
+  .box {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px 28px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e2e8f0;
   }
   h1 {
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 22px;
+    margin: 16px 0 8px;
     color: #064e3b;
-    margin-bottom: 10px;
   }
-  .desc {
-    color: var(--slate-600);
+  p {
+    color: #64748b;
     font-size: 15px;
     line-height: 1.6;
-    margin-bottom: 24px;
+    margin: 0 0 24px;
   }
-  .version-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
-    text-align: left;
-  }
-  @media (min-width: 540px) {
-    .version-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  .card {
-    border: 2px solid var(--slate-200);
-    border-radius: 14px;
-    padding: 20px 18px;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: #ffffff;
-  }
-  .card:hover {
-    border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px -4px rgba(5, 150, 105, 0.15);
-  }
-  .card.highlight {
-    border-color: var(--primary);
-    background: #f0fdf4;
-  }
-  .card-tag {
+  a.btn {
     display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 999px;
-    margin-bottom: 10px;
-    align-self: flex-start;
-  }
-  .tag-new {
-    background: #fde68a;
-    color: #92400e;
-  }
-  .tag-old {
-    background: #e2e8f0;
-    color: #475569;
-  }
-  .card-title {
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: #064e3b;
-  }
-  .card-info {
-    font-size: 13px;
-    color: var(--slate-600);
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-  .card-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 8px 12px;
-    border-radius: 8px;
-    text-align: center;
-  }
-  .btn-primary {
-    background: var(--primary);
+    padding: 12px 28px;
+    background: #059669;
     color: #ffffff;
-  }
-  .btn-ghost {
-    background: #ffffff;
-    color: var(--slate-600);
-    border: 1px solid var(--slate-200);
-  }
-  .auto-jump {
-    font-size: 13px;
-    color: #94a3b8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .stop-btn {
-    background: none;
-    border: none;
-    color: #059669;
+    text-decoration: none;
+    border-radius: 999px;
     font-weight: 700;
-    cursor: pointer;
-    text-decoration: underline;
-    font-size: 13px;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+    transition: transform 0.15s, background 0.15s;
+  }
+  a.btn:hover {
+    background: #047857;
+    transform: translateY(-1px);
   }
 </style>
 </head>
 <body>
-<div class="portal-box">
-  <img class="logo" src="選生二網頁＿new/img/hanlin-logo.png" alt="翰林出版">
-  <div class="kicker">HANLIN BIOLOGY II INTERACTIVE HUB</div>
+<div class="box">
+  <img src="選修生物2教材網站/img/hanlin-logo.png" alt="翰林出版" width="48" height="48">
   <h1>選修生物（Ⅱ）互動教學網站</h1>
-  <p class="desc">歡迎使用高中選修生物（Ⅱ）數位互動教材。本站收錄 5 大章節、14 節正課與 6 大探討活動，請選擇欲瀏覽的版本：</p>
-
-  <div class="version-grid">
-    <!-- 第二版：優化版 -->
-    <a class="card highlight" href="選生二網頁＿new/">
-      <div>
-        <span class="card-tag tag-new">✨ 推薦・第二版</span>
-        <div class="card-title">第二版（質感優化版）</div>
-        <div class="card-info">
-          課本插圖 288dpi 超清渲染、全單元互動式貼標籤與排序練習、完整保留 PPT 原題與詳解。
-        </div>
-      </div>
-      <div class="card-btn btn-primary">進入第二版優化網頁 →</div>
-    </a>
-
-    <!-- 第一版：對照版 -->
-    <a class="card" href="選修生物2教材網站/">
-      <div>
-        <span class="card-tag tag-old">第一版・對照版</span>
-        <div class="card-title">第一版（原始網頁）</div>
-        <div class="card-info">
-          收錄各章節基礎互動簡報、動畫播放與雲端影片對照，保留原始教學版型作為對照。
-        </div>
-      </div>
-      <div class="card-btn btn-ghost">進入第一版原版網頁 →</div>
-    </a>
-  </div>
-
-  <div class="auto-jump" id="jumpNotice">
-    <span>系統將於 <b id="countdown">3</b> 秒後自動前往【第二版・質感優化版】</span>
-    <button class="stop-btn" type="button" onclick="cancelJump()">取消自動導向</button>
-  </div>
+  <p>正在自動導向至教材入口網站，若頁面未自動跳轉，請點擊下方按鈕：</p>
+  <a class="btn" href="選修生物2教材網站/">進入選修生物（Ⅱ）教材網站 →</a>
 </div>
-
-<script>
-  let seconds = 3;
-  let timer = setInterval(function() {
-    seconds--;
-    const el = document.getElementById('countdown');
-    if (el) el.textContent = seconds;
-    if (seconds <= 0) {
-      clearInterval(timer);
-      window.location.replace("選生二網頁＿new/");
-    }
-  }, 1000);
-
-  function cancelJump() {
-    clearInterval(timer);
-    const notice = document.getElementById('jumpNotice');
-    if (notice) notice.innerHTML = '<span style="color:#059669;">已取消自動跳轉，請手動選擇上方版本。</span>';
-  }
-</script>
 </body>
 </html>
