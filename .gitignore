@@ -29,3 +29,7 @@
 node_modules/
 /private/tmp/
 *.log
+
+# 舊版各章單檔網頁（本地 Google Drive 保留，不推送到 GitHub）
+CH*/教學網頁/
+探討活動*/教學網頁/
