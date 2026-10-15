@@ -1,14 +1,14 @@
-# 翰林版 選修生物 (Ⅱ) 教學網頁【第二版・質感優化版】發布總表
+# 翰林版 選修生物 (Ⅱ) 教學網頁【質感優化版】發布總表
 
-本清單為 **翰林版選修生物 (Ⅱ) 第二版（質感優化版）** 專屬獨立總表。包含全冊 5 大章節、14 個正課單元與 6 個探討活動的 GitHub Pages 線上網址、章節入口與 Google 雲端硬碟教學影片對照（各章節檔名皆已加上章節序號備註）。
+本清單為 **翰林版選修生物 (Ⅱ) 質感優化版** 專屬獨立總表。包含全冊 5 大章節、14 個正課單元與 6 個探討活動的 GitHub Pages 線上網址、章節入口與 Google 雲端硬碟教學影片對照（各章節檔名皆已加上章節序號備註）。
 
 ---
 
-## 🌐 第二版總入口網站
+## 🌐 總入口網站
 
 | 網站名稱 | 🚀 網址 (GitHub Pages) | 📌 說明 | 狀態 |
 | :--- | :--- | :--- | :---: |
-| **選修生物 (Ⅱ) 教材網站（第二版・質感優化版）** | [https://froglssh.github.io/hanlin-elective-biology-2-web/選生二網頁＿new/](https://froglssh.github.io/hanlin-elective-biology-2-web/選生二網頁＿new/) | 全冊總覽入口，全面升級 288dpi 圖解、互動貼標籤與排序練習、PPT 原題詳解 | ✅ 已上線 |
+| **選修生物 (Ⅱ) 教材網站** | [https://froglssh.github.io/hanlin-elective-biology-2-web/選生二網頁＿new/](https://froglssh.github.io/hanlin-elective-biology-2-web/選生二網頁＿new/) | 全冊總覽入口，全面升級 288dpi 圖解、互動貼標籤與排序練習、PPT 原題詳解 | ✅ 已上線 |
 
 ---
 
