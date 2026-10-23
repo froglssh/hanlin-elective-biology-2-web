@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'發現史與英格曼',T2:'氧氣來源',T3:'色素與光系統'
 const TAGL={T1:'l2',T2:'l3',T3:'l6',T4:'l7',T5:'l8',T6:'l10',T7:'l11'};
 const GROUPS={g1:'3-3.1 光合作用的三要素',g2:'光反應',g3:'固碳反應'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>光合作用是怎麼被發現的</h4><p>古希臘哲學家大多認為植物的養分來自土壤。後來科學家經過無數實驗，才逐步解開光合作用需要<b>陽光、空氣與水</b>。</p></div><div class=\"ex\"><h4>歷史年表（看每個人新增了什麼）</h4><ul><li><b>17 世紀・凡赫芒</b>：記錄柳樹生長與土壤變化，發現植物增加的重量<b>不是來自土壤，而是來自水</b>。</li><li><b>1771～1774・普利斯萊、英恩浩斯</b>：密閉容器中，蠟燭燃燒產生「壞空氣」使老鼠無法存活；綠色植物照光後產生「好空氣」，讓老鼠存活。</li><li><b>1782・拉瓦節</b>：證實蠟燭與老鼠消耗了「好空氣」，並命名為<b>氧氣</b>；植物照光後會產生氧氣。</li><li><b>1796・英恩浩斯</b>：推論植物綠色部分利用陽光裂解壞空氣（CO₂），利用碳生長，將氧氣當廢棄物釋出；沒照光時植物會產生 CO₂。</li><li><b>1893・巴恩斯</b>：提出 <b>photosynthesis</b>，photo 是「光」，synthesis 是「合成」。</li></ul></div><div class=\"ex\"><h4>讀歷史的方法</h4><p>每一個結論都建立在前人的實驗上。注意「壞空氣＝二氧化碳、好空氣＝氧氣」是當時的叫法，名稱是後來才確認的。</p></div>", "l2": "<div class=\"ex g\"><h4>光合作用三要素與英格曼的實驗</h4><p>光合作用是生物利用<b>光能、二氧化碳（CO₂）、水（H₂O）</b>合成醣類的過程。19 世紀科學家已知綠藻照光會產生氧氣。</p></div><div class=\"ex\"><h4>1883 年英格曼實驗（圖 3－6）</h4><ul><li>把<b>絲狀綠藻</b>與<b>好氧菌</b>放在玻片上一起培養。</li><li>用<b>稜鏡</b>把陽光分成多種色光，分別照射綠藻的不同部位。</li><li>觀察好氧菌聚集在哪些色光照射的位置。</li></ul></div><div class=\"ex\"><h4>怎麼解讀</h4><p>好氧菌需要氧氣，所以聚集的地方氧氣最多，代表光合作用最旺盛。結果好氧菌偏好聚集在<b>紫、藍及紅光</b>照射的區域，也就區分了不同色光對光合作用速率的影響。</p></div>", "l3": "<div class=\"ex g\"><h4>氧氣到底來自 CO₂ 還是 H₂O</h4><p>1930 年以前，已知光合作用把 H₂O 與 CO₂ 變成醣類並放出 O₂，但不知道 O₂ 來自哪個分子。</p></div><div class=\"ex\"><h4>范尼爾的推理（1930 年代）</h4><ul><li>發現有些細菌（紫硫菌）也能行光合作用，反應式為 <b>2H₂S + CO₂ → 2S + [CH₂O] + H₂O</b>，產生的是固體<b>硫</b>。</li><li>類比綠色植物：<b>2H₂O + CO₂ → O₂ + [CH₂O] + H₂O</b>。</li><li>因此推測：植物放出的 O₂ 來自 <b>H₂O 的分解</b>。</li></ul></div><div class=\"ex\"><h4>魯賓的驗證（1940 年代，¹⁸O 追蹤）</h4><ul><li>實驗 1：提供 H₂¹⁸O 與一般 CO₂ → 放出的是 <b>¹⁸O₂</b>。</li><li>實驗 2：提供 C¹⁸O₂ 與一般 H₂O → 放出的是<b>一般 O₂</b>。</li><li>結果證實：O₂ 來自水，不是來自 CO₂。</li></ul></div>", "l4": "<div class=\"ex g\"><h4>光合作用總覽</h4><p>大部分植物行光合作用的主要部位是<b>葉片</b>，葉肉細胞通常富含<b>葉綠體</b>。光合作用分成兩個部分（圖 3－7）。</p></div><div class=\"ex\"><h4>兩階段分工</h4><ul><li><b>光反應</b>：在<b>類囊體</b>進行。H₂O 被分解並放出 O₂，同時產生 <b>ATP 與 NADPH</b>。</li><li><b>固碳反應</b>：在葉綠體<b>基質</b>進行。利用 ATP 與 NADPH 把 CO₂ 轉變成醣類。</li></ul></div><div class=\"ex\"><h4>兩者互相供應</h4><p>光反應提供固碳反應 ATP 與 NADPH；固碳反應則把用完的 <b>ADP + Pi、NADP⁺</b> 送回光反應再利用。圖中箭頭就是這個來回的物質循環。</p></div>", "l5": "<div class=\"ex g\"><h4>光合色素：吸光的分子</h4><p>綠色植物的光合色素分成兩大類：<b>葉綠素</b>與<b>類胡蘿蔔素</b>（圖 3－8）。</p></div><div class=\"ex\"><h4>色素與吸光</h4><ul><li><b>葉綠素</b>（葉綠素 a、葉綠素 b）：主要吸收<b>紫、藍及紅光</b>。</li><li><b>類胡蘿蔔素</b>（胡蘿蔔素、葉黃素）：主要吸收<b>藍光</b>。</li><li>葉綠素 a 與 b 的分子結構差異在圖中紅圈處。</li></ul></div><div class=\"ex\"><h4>腦力激盪提示</h4><p>請把英格曼的結果畫成「波長對光合作用速率」圖，再與吸收光譜比較：兩者在藍光與紅光都有高峰，說明<b>被色素吸收的光，最能推動光合作用</b>。</p></div>", "l6": "<div class=\"ex g\"><h4>光系統：吸光的工作單位</h4><p>光合色素與蛋白質結合成複合體，形成吸收光的單位，稱<b>光系統</b>，嵌埋在<b>類囊體膜</b>中（圖 3－9）。</p></div><div class=\"ex\"><h4>光系統的兩個部分</h4><ul><li><b>捕光複合體</b>：含吸光的<b>天線色素</b>（葉綠素 a、b 與類胡蘿蔔素），負責收集光能。</li><li><b>反應中心複合體</b>：含葉綠素 a、電子受體與其他蛋白質，負責把光能轉傳下去。</li></ul></div><div class=\"ex\"><h4>運作順序</h4><p>天線色素吸收光能 → 傳到反應中心的葉綠素 a → 被激發的葉綠素 a <b>釋出電子</b>給電子受體。</p></div><div class=\"ex\"><h4>兩種光系統</h4><p>類囊體膜中有<b>光系統 I（PSI）</b>與<b>光系統 II（PSII）</b>，依發現的先後命名。PSI 反應中心的葉綠素 a 對 <b>700 nm</b> 光吸收最大，稱 P700；PSII 對 <b>680 nm</b> 光吸收最大，稱 P680。</p></div>", "l7": "<div class=\"ex g\"><h4>光反應：電子的接力賽</h4><p>光反應是利用光能激發電子傳遞的過程，同時伴隨<b>水的裂解</b>（圖 3－10）。</p></div><div class=\"ex\"><h4>從 PSII 到 PSI</h4><ul><li>PSII 的天線色素收集光能，傳到反應中心，激發 <b>P680 釋出電子</b>。</li><li>同時促使類囊體內的 <b>H₂O 裂解</b>，產生 H⁺、e⁻ 與 O₂；水裂解出的 e⁻ 用來<b>遞補 P680 失去的 e⁻</b>。</li><li>e⁻ 進入電子傳遞鏈，經一連串氧化還原反應，驅使 <b>H⁺ 從基質進入類囊體腔</b>；e⁻ 再流向 PSI，補充 P700 失去的 e⁻。</li></ul></div><div class=\"ex\"><h4>PSI 之後</h4><ul><li>PSI 的光能激發 P700 釋出 e⁻，經第二段電子傳遞鏈，流向基質側的 NADP⁺。</li><li>在 <b>NADP⁺ 還原酶</b>催化下，NADP⁺ 被還原成 <b>NADPH</b>。</li><li>類囊體腔累積的 H⁺，經 <b>ATP 合成酶</b>回流基質，釋出的能量驅動 ADP 磷酸化、合成 <b>ATP</b>。</li></ul></div><div class=\"ex\"><h4>結果</h4><p>光反應的主要產物是 <b>ATP 與 NADPH</b>，供固碳反應使用；O₂ 是水分解的<b>副產物</b>。腦力激盪答案：PSII 失去的 e⁻ 由<b>水</b>補充，PSI 失去的 e⁻ 由 <b>PSII 傳來的電子</b>補充。</p></div>", "l8": "<div class=\"ex g\"><h4>兩種電子傳遞路線</h4><p>光反應的電子傳遞有兩種：非循環式與循環式。</p></div><div class=\"ex\"><h4>非循環式</h4><ul><li>路線：<b>H₂O → P680 → 電子傳遞鏈 → P700 → 電子傳遞鏈 → NADP⁺</b>。</li><li>產物：<b>ATP、NADPH</b>，並放出 O₂。</li></ul></div><div class=\"ex\"><h4>循環式</h4><ul><li>固碳反應需要的 ATP 比 NADPH 多，所以部分 ATP 來自循環式。</li><li>只用 <b>PSI</b>：P700 釋出的 e⁻ 傳給電子受體與載體，再傳到 PSII 與 PSI 間的電子傳遞鏈，最後<b>回到 P700</b>。</li><li>過程累積 H⁺ 在類囊體內，經化學滲透產生 ATP。</li><li>因此循環式<b>只有 ATP</b>，沒有 NADPH、沒有水分解（也沒有 O₂）。</li></ul></div>", "l9": "<div class=\"ex g\"><h4>ATP 怎麼合成</h4><p>ATP 可用兩種方式合成：<b>受質階層磷酸化</b>，或<b>化學滲透磷酸化</b>（選修生物 I 第 2 章）。</p></div><div class=\"ex\"><h4>化學滲透磷酸化的兩種</h4><ul><li>發生在光反應的<b>光合磷酸化</b>。</li><li>發生在呼吸作用的<b>氧化磷酸化</b>。</li></ul></div><div class=\"ex\"><h4>共同原理</h4><p>電子傳遞時把 H⁺ 運到膜的一側，造成<b>質子濃度梯度</b>；H⁺ 順濃度梯度經 ATP 合成酶回到另一側時，推動 ADP 磷酸化成 ATP。差別只是地點：葉綠體是 H⁺ 累積在<b>類囊體腔</b>，粒線體是累積在<b>膜間腔</b>。</p></div>", "l10": "<div class=\"ex g\"><h4>固碳反應（卡爾文循環）</h4><p>固碳反應發生在葉綠體<b>基質</b>，用光反應產生的 ATP 與 NADPH，把 CO₂ 轉變成醣類（圖 3－11）。卡爾文等人以 <b>¹⁴CO₂</b> 追蹤 ¹⁴C 在綠球藻中的轉變途徑而發現，所以又稱<b>卡爾文循環</b>。</p></div><div class=\"ex\"><h4>三個階段</h4><ul><li><b>固碳階段</b>：CO₂ 與<b>五碳醣</b>反應，再分解成<b>三碳化合物</b>（圖中 6 CO₂ 與 6 個五碳醣，得到 12 個三碳化合物）。</li><li><b>還原階段</b>：利用 ATP 與 NADPH，把三碳化合物還原成<b>三碳醣</b>（12 ATP、12 NADPH）。</li><li><b>再生階段</b>：大部分三碳醣利用 ATP 再生成五碳醣，循環使用；少部分逸出循環，合成<b>葡萄糖、蔗糖、澱粉</b>等有機物（10 個再生、2 個逸出）。</li></ul></div><div class=\"ex\"><h4>讀圖的方法</h4><p>先數碳：6 個 CO₂（共 6 個碳）加進循環，最後只有 2 個三碳醣（共 6 個碳）離開，其餘維持循環不斷。</p></div>", "l11": "<div class=\"ex g\"><h4>光合作用的意義</h4><p>藻類與植物藉光合作用，把<b>光能轉換為化學能</b>，利用大氣中的碳，把能量儲存在三碳醣中，再經其他代謝反應合成醣類與其他有機物。這些有機物既是能量來源，也是構成個體的材料。</p></div><div class=\"ex\"><h4>對生態系的影響</h4><p>藻類與植物是生態系的<b>生產者</b>，光合作用產生的有機物經食物網轉移，影響到地球上其他生物。</p></div><div class=\"ex\"><h4>影響光合作用速率的環境因子</h4><ul><li><b>光</b>：光波長影響效率；植物生長燈就是參考吸收光譜，設計為 400∼520 nm（藍光）與 610∼720 nm（紅光）。</li><li><b>溫度</b>：適當範圍內，溫度愈高速率愈高；太高會使光反應與固碳反應的<b>酵素變性</b>，或影響類囊體結構，速率下降甚至暫停。</li><li><b>CO₂</b>：濃度愈高反應愈快，最後達<b>最大速率</b>；達到後即使 CO₂ 再增加，速率也不再上升。</li></ul></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'知識補給站：光合作用反應的發現史',src:'課本 P79 知識補給站｜PPT 第 3–7 頁',fig:[B('hist','知識補給站：光合作用反應的發現史')],layout:'single',slides:3,
   pts:['17 世紀凡赫芒：柳樹增加的重量並非來自土壤，而是來自水。','1771～1774 普利斯萊、英恩浩斯：蠟燭燃燒產生「壞空氣」，綠色植物<b>照光</b>後產生「好空氣」，讓老鼠存活。','1782 拉瓦節：命名好空氣為<b>氧氣</b>。','1796 英恩浩斯：植物綠色部分利用陽光裂解壞空氣（CO₂）以碳生長、釋出氧氣；不照光時產生 CO₂。','1893 巴恩斯：提出 photosynthesis（光＋合成）。'],
@@ -521,7 +531,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -531,13 +541,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'原理與方法',T2:'切片操作',T3:'比例與功能',T4:'討�
 const TAGL={T1:'l1',T2:'l2',T3:'l5',T4:'l7'};
 const GROUPS={g1:'原理與永久切片',g2:'徒手切片',g3:'比例與討論'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>這個活動要回答什麼</h4><p>學過薄壁、厚角、厚壁三種細胞後，這個活動請你<b>在顯微鏡下找出它們</b>，並推論表皮、皮層、維管束的組成與功能有何異同。</p></div><div class=\"ex\"><h4>原理重點</h4><ul><li>植物體依功能分成：保護的<b>表皮組織系統</b>、運輸物質的<b>維管束組織系統</b>、填充其間的<b>基本組織系統</b>。</li><li>永久切片經<b>番紅－固綠雙重染色</b>：薄壁細胞染成<b>淡綠色</b>，厚壁細胞染成<b>紅色</b>。</li><li>徒手切片可即時觀察，但切不薄，不易看清微細構造。</li></ul></div><div class=\"ex\"><h4>為什麼課本照片有顏色</h4><p>課本用的是染色後的永久切片；自己徒手切的新鮮材料沒有染色，所以看到的比較接近原色。這兩種做法剛好互補：一個看細節，一個看活體整體。</p></div>", "l2": "<div class=\"ex g\"><h4>（一）永久切片觀察：先整體、再細節</h4><p>永久切片已完成固定、包埋、切薄與染色，直接觀察即可。</p></div><div class=\"ex\"><h4>三個步驟</h4><ul><li><b>低倍率</b>：看表皮、維管束與基本組織（皮層、髓）在橫切面中的<b>分布、所占比例</b>，以及維管束的排列方式。</li><li><b>高倍率</b>：看各構造的細胞形態，如細胞壁的厚薄、有無細胞核、有無內含物。</li><li>記錄並<b>繪製示意圖</b>，標示各構造位置。</li></ul></div><div class=\"ex\"><h4>小提醒</h4><p>並非所有構造都會出現在同一張切片中，找不到時不用懷疑自己，換一個視野或對照課本圖 2－3、2－15 再確認。</p></div>", "l3": "<div class=\"ex g\"><h4>（二）新鮮材料：取材與徒手切片</h4><p>這部分用<b>西洋芹葉柄</b>練習徒手切片，因為它含有明顯的厚角細胞。</p></div><div class=\"ex\"><h4>操作要點</h4><ul><li>用刀片切下適當大小的葉柄片段。</li><li>一手以拇指與食指穩住材料，另一手持穩刀片，<b>橫切</b>成薄片。</li><li>反覆切，並把薄片移到裝水的培養皿或燒杯中。</li></ul></div><div class=\"ex\"><h4>什麼叫橫切</h4><p>橫切是從<b>與材料主軸垂直</b>的方向切下。若要橫切葉片，則以主脈當主軸，垂直主脈切。刀片很利，用力方向要朝向自己以外，操作時務必小心。</p></div>", "l4": "<div class=\"ex g\"><h4>做成水埋玻片</h4><p>把切好的薄片放到載玻片上，製成<b>水埋玻片標本</b>後再觀察。</p></div><div class=\"ex\"><h4>步驟 4：製片</h4><ul><li>載玻片中央滴一滴蒸餾水。</li><li>挑選<b>半透明</b>的較薄切片（愈薄愈易觀察），用鑷子移到載玻片上。</li><li>蓋上蓋玻片。</li></ul></div><div class=\"ex\"><h4>步驟 5：觀察重點</h4><ul><li>低倍率觀察不同組織，並與永久切片的結果<b>比較</b>，特別看<b>維管束的分布</b>與表皮內側的厚角細胞。</li><li>再用高倍率觀察厚角細胞的<b>細胞壁特徵</b>（不均勻加厚），並記錄。</li></ul></div>", "l5": "<div class=\"ex g\"><h4>討論 1：向日葵莖誰占比最高</h4><p>整體而言，<b>薄壁細胞所占比例最高</b>（參考數據：髓約 48%、皮層約 28%、表皮約 3%）。</p></div><div class=\"ex\"><h4>怎麼解讀</h4><ul><li>維管束中的厚壁細胞數目不一定比薄壁細胞多，但<b>木質部的導管是厚壁細胞，面積較大</b>，所以整體占比不小。</li><li><b>厚角細胞集中在皮層</b>，協助支持幼嫩的莖。</li><li>薄壁細胞的功能依位置而異：表皮負責保護；皮層與髓<b>儲存水分與代謝產物</b>。</li></ul></div><div class=\"ex\"><h4>對向日葵的益處</h4><p>大量薄壁細胞方便儲存水分與養分、快速生長；厚角與厚壁細胞則分布在需要支持與運輸的位置，各司其職。</p></div>", "l6": "<div class=\"ex g\"><h4>討論 2：西洋芹葉柄</h4><p>西洋芹莖短縮，葉柄才是地上部分的主要構造，負責<b>支撐葉片且生長快速</b>。</p></div><div class=\"ex\"><h4>數據與判讀</h4><ul><li>葉柄的表皮與基本組織大多是薄壁細胞（基本組織約 75%）。</li><li>維管束數目比向日葵莖多，但不再增生新組織，所占比例較低（約 6%）。</li><li>快速生長的幼嫩葉柄，靠近表皮的皮層有<b>成束的厚角細胞</b>，主要提供支撐。</li></ul></div><div class=\"ex\"><h4>為什麼不會長粗</h4><p>西洋芹是草本植物，維管束不發達，<b>沒有維管束形成層</b>，所以不會持續加粗。這和 2-1 學的次級生長相呼應。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'目的與原理：三個組織系統',src:'課本 P58｜PPT 第 1–4 頁',fig:[B('s03_03','原 PPT：三個組織系統的位置與功能')],layout:'single',slides:1,
   pts:['<b>目的</b>：在顯微鏡下辨別向日葵莖的表皮、皮層、維管束，分析其組成細胞屬於<b>薄壁、厚角或厚壁細胞</b>，並歸納組成與功能。','植物體依功能分為<b>保護的表皮組織系統</b>、<b>運輸的維管束組織系統</b>與填充其間的<b>基本組織系統</b>。','永久切片經<b>番紅－固綠</b>雙重染色：<b>薄壁細胞染成淡綠色，厚壁細胞染成紅色</b>。','徒手切片可即時觀察，但切不薄、不易看微細構造。'],
@@ -480,7 +490,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -490,13 +500,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

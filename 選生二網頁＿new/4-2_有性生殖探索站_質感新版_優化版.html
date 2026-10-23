@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'花的構造',T2:'花的分類',T3:'果實的構造',T4:'世代�
 const TAGL={T1:'l1',T2:'l2',T3:'l3',T4:'l5',T5:'l6',T6:'l7',T7:'l9',T8:'l10'};
 const GROUPS={g1:'花與果實',g2:'有性生殖的階段',g3:'受精與應用'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>花：被子植物的生殖構造</h4><p>花著生於<b>花托</b>上。實際進行有性生殖的是<b>雄蕊與雌蕊</b>（圖 4－4）。</p></div><div class=\"ex\"><h4>四個部分</h4><ul><li><b>花萼</b>：單朵花上全部的萼片。</li><li><b>花冠</b>：單朵花上全部的花瓣。</li><li><b>雄蕊</b>＝<b>花藥</b>（內有花粉囊，產生花粉粒）＋<b>花絲</b>（支撐花藥）。</li><li><b>雌蕊</b>＝<b>柱頭</b>（黏附花粉）＋<b>花柱</b>＋<b>子房</b>（內有<b>胚珠</b>，是卵細胞發育的場所）。</li></ul></div><div class=\"ex\"><h4>記憶線索</h4><p>雄蕊產生花粉，雌蕊提供卵細胞：花粉粒落在柱頭，卵細胞藏在子房的胚珠裡。</p></div>", "l2": "<div class=\"ex g\"><h4>兩種分類，兩套標準</h4><p>課本用兩套標準來分類花，不要混在一起。</p></div><div class=\"ex\"><h4>完全花與不完全花（看四部分是否齊全）</h4><ul><li><b>完全花</b>：同時具有<b>花萼、花冠、雄蕊、雌蕊</b>四部分，例如玫瑰。</li><li><b>不完全花</b>：缺少任一構造，例如絲瓜花。</li></ul></div><div class=\"ex\"><h4>兩性花與單性花（看雌雄器官）</h4><ul><li><b>兩性花</b>：同時具有雄蕊與雌蕊，例如豌豆花、百合花。</li><li><b>單性花</b>：只有雄蕊或雌蕊，例如絲瓜的雄花與雌花。</li></ul></div><div class=\"ex\"><h4>易混淆</h4><p>絲瓜花缺雄蕊或雌蕊，所以同時是「不完全花」又是「單性花」；玫瑰是完全花，也是兩性花。</p></div>", "l3": "<div class=\"ex g\"><h4>果實是怎麼來的</h4><p>花完成<b>授粉與受精</b>後，<b>子房發育為果實，胚珠發育為種子</b>。果實可視為植物有性生殖子代（種子）的<b>傳播策略</b>，形態多樣更利於種子散布。</p></div><div class=\"ex\"><h4>構造與分類（圖 4－6）</h4><ul><li>果實分成<b>果皮與種子</b>兩部分，俗稱的「果皮與果肉」統稱為果皮。</li><li><b>乾果</b>：成熟時果皮乾燥。<b>裂果</b>會自行裂開（豌豆、羊蹄甲）；<b>閉果</b>需外力才裂開（向日葵、花生、板栗）。</li><li><b>肉果</b>：成熟時果皮肉質多汁，多以<b>動物為媒介</b>散播種子（檸檬、桃、蘋果、草莓、鳳梨）。</li></ul></div><div class=\"ex\"><h4>特別提醒</h4><p>有些肉果的肉質部分是由子房與其他構造共同發育而成，例如<b>草莓的果實來自花托</b>。</p></div>", "l4": "<div class=\"ex g\"><h4>三種花如何變成果實（知識補給站）</h4><p>藉三個例子看「花 → 果」的過程，注意<b>肉質部分到底是哪一個構造</b>。</p></div><div class=\"ex\"><h4>三個例子</h4><ul><li><b>羊蹄甲</b>：雌蕊的<b>子房膨大、加長</b>，形成綠色豆莢，成熟後開裂。</li><li><b>草莓</b>：<b>花托膨大</b>形成可食的肉質部分；表面的小顆粒才是由子房發育的果實。</li><li><b>鳳梨</b>：由<b>整個花序</b>發育而成，每一朵花形成一個小果實。</li></ul></div><div class=\"ex\"><h4>小結</h4><p>羊蹄甲是子房變果實；草莓可食部分來自花托；鳳梨則由多朵花一起形成，這也是活動 4-1 要分辨單花果與多花果的原因。</p></div>", "l5": "<div class=\"ex g\"><h4>世代交替：2n 與 1n 輪流出現</h4><p>被子植物的有性生殖涉及<b>減數分裂與受精作用</b>，可增加子代的遺傳多樣性。這個過程中，二倍體（孢子體）與單倍體（配子體）兩個世代交替出現，稱為<b>世代交替</b>（圖 4－7）。</p></div><div class=\"ex\"><h4>一圈怎麼走</h4><ul><li><b>孢子體</b>（2n，多細胞個體）經<b>減數分裂</b>，形成大孢子與小孢子（1n），進入單倍體世代。</li><li>大、小孢子經<b>有絲分裂</b>，分別產生多細胞的雌、雄<b>配子體</b>，並從中產生雌、雄配子（卵細胞、精細胞）。</li><li>雌、雄配子經<b>受精作用</b>形成<b>合子（受精卵，2n）</b>，回到二倍體世代。</li></ul></div><div class=\"ex\"><h4>這些發生在哪裡</h4><p>都在花的雌、雄蕊中：雄蕊產生的花粉粒藉花粉管把精細胞送進雌蕊的胚珠，與卵細胞受精；胚珠在子房內發育成種子，整個子房發育成果實。</p></div>", "l6": "<div class=\"ex g\"><h4>雄配子體：花粉粒的形成（圖 4－8①、4－9）</h4><p>雄蕊花藥中的<b>小孢子母細胞</b>（2n，俗稱花粉母細胞）經減數分裂，產生 <b>4 個小孢子（1n）</b>。</p></div><div class=\"ex\"><h4>小孢子 → 花粉粒</h4><ul><li>每個小孢子再進行 1 至數次<b>有絲分裂</b>，產生 2 至多個細胞，並在外面形成共同的厚壁，成為成熟的花粉粒。</li><li>花粉粒具<b>管核（營養細胞）</b>與<b>生殖細胞</b>，生殖細胞之後會分裂成 <b>2 個精細胞</b>。</li><li>花粉粒是由一個小孢子分裂而成的多細胞狀態，所以可視為<b>雄配子體</b>；不同植物的花粉粒外形差異大，可作分類特徵。</li></ul></div><div class=\"ex\"><h4>雌配子體：胚囊的形成（圖 4－8②）</h4><ul><li>胚珠內的<b>大孢子母細胞</b>（2n）經減數分裂產生 <b>4 個大孢子</b>，其中 <b>3 個退化</b>。</li><li>剩下的 1 個大孢子經有絲分裂發育成<b>胚囊</b>（雌配子體），含<b>卵細胞</b>與有<b>兩個極核</b>的<b>中央細胞</b>。</li><li>胚珠外層的<b>珠被</b>由多層細胞構成，保護胚珠內部。</li></ul></div>", "l7": "<div class=\"ex g\"><h4>授粉作用與花的多樣化</h4><p>花粉粒散播到雌性生殖構造（柱頭）的過程稱<b>授粉作用</b>。被子植物的花有許多特化外形，利於多樣的授粉方式（圖 4－10）。</p></div><div class=\"ex\"><h4>兩種策略</h4><ul><li><b>蟲媒花、鳥媒花</b>：花瓣鮮豔明顯、氣味濃郁或有花蜜，吸引動物訪花；動物沾滿花粉，成為傳粉媒介。</li><li><b>風媒花</b>（如玉米）：沒有吸引動物的特徵，但雄蕊的<b>花藥大、花粉量多</b>，花粉靠風力飄落到<b>毛狀的柱頭</b>上。</li></ul></div><div class=\"ex\"><h4>共同演化：蜂蘭的故事</h4><p>蜂蘭的花形像雌角蜂並有特殊氣味，引誘雄角蜂前來企圖交配；雄蜂頭部碰到雄蕊蓋，<b>花粉塊</b>便黏在頭上，再飛到另一朵蜂蘭時就落在柱頭上，完成<b>異花授粉</b>。花與傳粉動物的形態、氣味互相配合，被視為<b>共同演化</b>。</p></div>", "l8": "<div class=\"ex g\"><h4>雙重受精：被子植物的特色</h4><p>花粉粒落在柱頭上<b>萌發成花粉管</b>，其中的生殖細胞<b>有絲分裂</b>為兩個精細胞（圖 4－11）。</p></div><div class=\"ex\"><h4>受精的過程</h4><ul><li>花粉管朝胚珠延伸，到達<b>珠被開口</b>時，把兩個精細胞送入胚囊。</li><li><b>精細胞 ＋ 卵細胞</b> → <b>受精卵（2n）</b>。</li><li><b>精細胞 ＋ 中央細胞</b>（含兩個極核）→ <b>胚乳母細胞（3n）</b>。</li></ul></div><div class=\"ex\"><h4>為什麼叫雙重</h4><p>一個花粉管送來的兩個精細胞，<b>分別各自受精一次</b>，這是被子植物特有的受精方式，稱<b>雙重受精</b>。</p></div>", "l9": "<div class=\"ex g\"><h4>受精之後：種子與果實</h4><p>雙重受精後，胚珠內各部分各有去向（圖 4－11）。</p></div><div class=\"ex\"><h4>對應關係</h4><ul><li><b>受精卵</b> → <b>胚</b>（2n，幼小孢子體）。</li><li><b>胚乳母細胞</b> → <b>胚乳</b>（3n）。</li><li><b>珠被</b> → <b>種皮</b>。</li><li>胚珠 → <b>種子</b>（種皮、胚、胚乳）。</li></ul></div><div class=\"ex\"><h4>果實同時形成</h4><p>胚珠發育成種子的同時，外圍的<b>子房壁發育成果皮</b>，種子與果皮共同形成<b>果實</b>。一個胚珠最多形成一粒種子，所以果實中的種子數不會超過胚珠數。</p></div>", "l10": "<div class=\"ex g\"><h4>生殖原理用在農業</h4><p>人們善用植物的生殖特性，配合<b>育種</b>與<b>組織培養</b>，讓農業蓬勃發展。</p></div><div class=\"ex\"><h4>兩步驟搭配</h4><ul><li><b>育種（有性生殖）</b>：有性生殖可增加個體變異，藉<b>人工授粉</b>讓父本與母本雜交，產生具變異的子代，再篩選特殊表徵的個體，得到新品種。</li><li><b>量產（無性生殖）</b>：利用組織培養，在無菌室培養出許多相同特性的幼苗，保留新品種的特徵。</li></ul></div><div class=\"ex\"><h4>例：蝴蝶蘭「台大小斑馬」</h4><p>雜交育種後，在無菌室培養出許多相同特性的幼苗；幼苗移植前先到溫室<b>馴化</b>（適應環境），再移植成盆栽、在溫室種植。許多優良花卉品種就是這樣培育出來的。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'花的基本組成（圖 4-4）',src:'課本 P111 圖 4-4｜PPT 第 2–5 頁',fig:[B('ov','圖 4-4 花的基本組成構造')],layout:'single',slides:2,
   pts:['花是被子植物的生殖構造，著生於<b>花托</b>上。','<b>花萼</b>：單朵花上的全部萼片；<b>花冠</b>：單朵花上的全部花瓣。','<b>雄蕊</b>＝<b>花藥</b>（含花粉囊，產生花粉粒）＋<b>花絲</b>（支撐花藥）。','<b>雌蕊</b>＝<b>柱頭</b>（黏附花粉）＋<b>花柱</b>＋<b>子房</b>（內有<b>胚珠</b>，卵細胞發育處）。'],
@@ -516,7 +526,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -526,13 +536,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

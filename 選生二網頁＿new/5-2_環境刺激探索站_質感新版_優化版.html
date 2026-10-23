@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'向性與傾性',T2:'光週期',T3:'光敏素',T4:'開花素與�
 const TAGL={T1:'l1',T2:'l3',T3:'l4',T4:'l6',T5:'l7',T6:'l9',T7:'l10'};
 const GROUPS={g1:'植物運動與開花',g2:'種子萌發',g3:'逆境與防禦'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>固著卻會動：向性運動</h4><p>植物行固著生活，但仍能因環境刺激表現<b>向性</b>與<b>傾性</b>運動，幫助獲得充足的陽光與水。</p></div><div class=\"ex\"><h4>向性：生長方向與刺激方向有關</h4><ul><li>光 → <b>向光性</b>；重力 → <b>向地性</b>。</li><li>藤本植物的嫩莖或捲鬚接觸到物體或枝條 → <b>向觸性</b>，彎曲纏繞以攀緣到陽光充足處（圖 5－14，牽牛花嫩莖彼此纏繞）。</li></ul></div><div class=\"ex\"><h4>性質</h4><p>向性屬於<b>生長反應</b>，多與生長素分布不均、造成兩側生長速率不同有關，所以速度慢、不可逆。</p></div>", "l2": "<div class=\"ex g\"><h4>傾性運動：由膨壓變化引起</h4><p><b>傾性運動</b>是因<b>膨壓變化</b>而發生，運動方向<b>與刺激方向無關</b>，而且具<b>可逆性</b>。</p></div><div class=\"ex\"><h4>例子</h4><ul><li>酢漿草的睡眠運動。</li><li>含羞草的觸發運動。</li><li>捕蠅草的捕蟲運動。</li></ul></div><div class=\"ex\"><h4>含羞草（圖 5－15）</h4><ul><li>和小葉基部的<b>葉枕</b>有關。</li><li>受觸發時：葉枕<b>上側細胞膨壓降低、下側細胞膨壓升高</b> → 小葉向上閉合。</li><li>恢復時相反：上側膨壓高、下側膨壓低 → 小葉向下展開。</li></ul></div>", "l3": "<div class=\"ex g\"><h4>光週期與開花</h4><p>被子植物成熟後會開花，但有些需要環境刺激才能被誘導開花，其中以<b>光與溫度</b>影響最顯著。一天中白晝與黑夜長短的週期變化稱<b>光週期</b>；植物感受季節性光週期而在特定時節開花，稱<b>光週期性</b>。</p></div><div class=\"ex\"><h4>臨界日長（圖 5－16）</h4><ul><li>以<b>開花率達 50%</b> 為基準。</li><li><b>菊花</b>：日照<b>短於 16 小時</b>才開花 → <b>短日照植物</b>。</li><li><b>菠菜</b>：日照<b>長於 14 小時</b>才開花 → <b>長日照植物</b>。</li><li>16、14 小時就是各自的<b>臨界日長</b>。</li></ul></div><div class=\"ex\"><h4>補充（知識補給站）</h4><p>1920 年代加納與艾拉德研究菸草發現這個現象。開花不受光週期影響的是<b>中性日照植物</b>。後來又發現黑暗期被光打斷，開花情況會改變，因此真正關鍵的是<b>連續黑暗的長度（臨界夜長）</b>，短日照植物又稱<b>長夜植物</b>，長日照植物又稱短夜植物。</p></div>", "l4": "<div class=\"ex g\"><h4>光敏素：感應光的蛋白質</h4><p>光週期性主要與細胞內的<b>光敏素</b>有關。光敏素是可感應光刺激的蛋白質，有兩種型式，吸收光譜不同（圖 5－17）。</p></div><div class=\"ex\"><h4>兩型的互相轉換（圖 5－18）</h4><ul><li><b>紅光型（Pr）</b>與<b>遠紅光型（Pfr）</b>。</li><li><b>Pr</b> 經<b>紅光</b>照射 → 轉為 <b>Pfr</b>。</li><li><b>Pfr</b> 經<b>遠紅光</b>照射，或處於<b>連續黑暗</b> → 轉為 <b>Pr</b>。</li></ul></div><div class=\"ex\"><h4>對開花的影響</h4><ul><li><b>Pfr 比例減少</b> → 短日照植物開花。</li><li><b>Pfr 比例增加</b> → 促進長日照植物開花。</li><li>Pfr 的比例與<b>連續黑暗的長度</b>有關，所以判斷光週期的影響常用臨界夜長。</li></ul></div>", "l5": "<div class=\"ex g\"><h4>用紅光與遠紅光做實驗（圖 5－19）</h4><p>光週期的感應部位主要在<b>葉片</b>，葉片接收到光的刺激後，把訊息傳到莖頂或側芽，影響花芽形成。</p></div><div class=\"ex\"><h4>a、b：正常黑暗期</h4><ul><li><b>a</b>：連續黑暗<b>短於</b>臨界夜長 → Pfr 轉為 Pr 較少、<b>Pfr 比例高</b> → <b>長日照植物</b>（鳶尾）開花。</li><li><b>b</b>：連續黑暗<b>長於</b>臨界夜長 → 大部分 Pfr 轉為 Pr、<b>Pfr 比例低</b> → <b>短日照植物</b>（菊花）開花。</li></ul></div><div class=\"ex\"><h4>c～f：中斷黑暗期</h4><ul><li><b>c</b>：黑暗期照紅光 → Pr 轉成 Pfr → Pfr 增加 → <b>長日照植物開花、短日照植物不開花</b>。</li><li><b>d</b>：紅光後再照遠紅光 → Pfr 下降 → <b>短日照植物開花</b>、長日照植物不開花。</li><li><b>e、f</b>：交替照射時，<b>最後一次的光照</b>決定能否開花。</li></ul></div>", "l6": "<div class=\"ex g\"><h4>開花素：葉片送給莖頂的訊號</h4><p>把兩株短日照植物嫁接，只讓其中一株接受適當光週期，結果<b>兩株都開花</b>。可知接受適當光週期的植物產生了某種物質，經<b>嫁接處的韌皮部</b>運送到另一株，這就是<b>開花素</b>，也是植物激素。</p></div><div class=\"ex\"><h4>過程</h4><p>光敏素比例變化 → 促使開花素產生 → 經<b>韌皮部</b>送到莖頂 → 頂芽分化成<b>花芽</b>而開花。</p></div><div class=\"ex\"><h4>春化作用（圖 5－20）</h4><ul><li>因<b>低溫刺激</b>而促進部分植物產生花芽，如梅花枝條頂端分生組織、水仙鱗莖，經冬天低溫形成花芽，翌年初春開花。</li><li>最初在農業上發現：冬小麥必須提早播種度冬，隔年春夏才開花結果；春天才播種可能延遲開花或不開花。</li><li>解決方法：把種子在<b>低溫下萌發</b>再移植，冬小麥仍能在夏天開花。</li><li>關鍵是<b>一定的低溫與持續的時間</b>，多見於四季分明的溫帶；低溫後莖頂分生組織由產生莖葉的營養芽，轉為產生花的生殖芽。</li></ul></div>", "l7": "<div class=\"ex g\"><h4>種子休眠與水、氧、溫度</h4><p>有些種子外觀成熟或已離開果實，遇到適當環境卻<b>仍不萌發</b>，這種現象稱<b>休眠</b>。</p></div><div class=\"ex\"><h4>休眠的常見原因</h4><ul><li><b>胚尚未發育完全</b>。</li><li><b>種皮乾燥堅硬</b>。</li><li>表面有<b>抑制萌發的物質</b>（如木瓜種子外的透明層，圖 5－21）。</li></ul></div><div class=\"ex\"><h4>三個環境因子</h4><ul><li><b>水</b>：沖掉種皮表面的抑制物質；使種皮吸水軟化；細胞獲得水分，<b>酵素活化</b>，促進新陳代謝。</li><li><b>氧</b>：供應細胞行<b>有氧呼吸</b>產生能量；泡水軟化種皮、去除種皮或增加供氧，可加速萌發（但長期浸泡可能缺氧）。</li><li><b>溫度</b>：酵素通常在常溫下作用，過高或過低都降低活性；溫帶秋季成熟的種子需度過寒冬，可先<b>低溫處理</b>再回常溫以促進萌發。</li></ul></div>", "l8": "<div class=\"ex g\"><h4>光與外力</h4><p>有些種子的萌發會受光影響，作用機制主要與光敏素有關，原理與開花的光敏素相似，依 <b>Pfr 比例</b>表現不同反應。</p></div><div class=\"ex\"><h4>光（圖 5－22、知識補給站）</h4><ul><li><b>萵苣</b>種子需照光才容易萌發（感光型）；<b>番茄</b>種子在黑暗中才萌發。</li><li>萵苣：<b>紅光（R）促進</b>萌發（Pfr 增加）、<b>遠紅光（FR）抑制</b>。</li><li>R 與 FR 輪流照射時，<b>最後一次的光</b>決定萌發率：例如 R → FR → R 為 100%，R → FR 為 54%。</li></ul></div><div class=\"ex\"><h4>外力（圖 5－23）</h4><ul><li>有些種皮或果皮很硬，會阻礙幼苗生長；外力破壞後可加速萌發。</li><li>雀榕果實被白頭翁吃下，種子經消化道消化液<b>軟化種皮</b>；松鼠啃咬核桃硬果皮形成裂縫，都有利萌發。</li></ul></div>", "l9": "<div class=\"ex g\"><h4>逆境與激素</h4><p>凡是不利於生長發育的環境因素，統稱<b>逆境</b>：水分與溫度等<b>非生物逆境</b>，以及細菌、真菌、昆蟲等造成的<b>生物逆境</b>。面臨逆境時，主要由 <b>ABA 與乙烯</b>協助調節生長。</p></div><div class=\"ex\"><h4>三種情況</h4><ul><li><b>乾旱</b>：ABA 增加，使<b>氣孔關閉</b>；乙烯增加，促進葉柄基部離層形成並加速葉片老化。</li><li><b>淹水</b>：根部缺氧誘導<b>乙烯</b>產生，造成細胞計畫性死亡、形成空隙。</li><li><b>機械刺激</b>：幼苗常被觸摸，乙烯誘導生長由向上抽長改為<b>橫向加粗</b>，長得粗而短；農民藉輕撫秧苗使其粗壯。</li></ul></div><div class=\"ex\"><h4>溫度逆境</h4><p>高溫或低溫會改變細胞膜的組成與結構，可能阻礙光合與呼吸作用。溫帶闊葉植物會產生<b>熱休克蛋白</b>保護細胞內的酵素與蛋白質，或形成耐寒特性。熱休克蛋白最初因高溫誘導而得名，後來發現低溫等逆境也會誘導。</p></div>", "l10": "<div class=\"ex g\"><h4>植物怎麼防禦</h4><p>植物是陸域生態系的生產者，也是消費者與微生物賴以維生的資源，因此演化出各種自我保護策略。</p></div><div class=\"ex\"><h4>既有防線</h4><ul><li>質地堅硬，或有<b>毛、刺</b>，降低動物啃食。</li><li>表面<b>角質、蠟質</b>、木質莖的<b>木栓層</b>，防止病原入侵。</li><li>分泌黏液、樹脂、乳汁，加速傷口癒合並限制昆蟲。</li></ul></div><div class=\"ex\"><h4>受侵害後的三層防禦（圖 5－24）</h4><ul><li><b>立即性防禦</b>：在受害部位觸發<b>過敏反應</b>，生成生物鹼等化學物質。</li><li><b>局部性防禦</b>：細胞壁木質化、細胞計畫性死亡，以及茉莉酸誘導產生蛋白酶抑制物等防禦蛋白。</li><li><b>系統性防禦</b>：<b>茉莉酸</b>及其揮發物，或<b>水楊酸</b>（經篩管）與<b>水楊酸甲酯</b>（經空氣）傳到未受傷部位，甚至傳給鄰近健康植株。</li></ul></div><div class=\"ex\"><h4>生物性防禦</h4><p>玉米葉被玉米螟幼蟲啃食時，會釋放揮發性物質，<b>吸引寄生蜂</b>前來產卵寄生在幼蟲上，最終使玉米螟死亡。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'向性運動（圖 5-14）',src:'課本 P148 圖 5-14｜PPT 第 2–6 頁',fig:[B('touch','圖 5-14 牽牛花的嫩莖彼此纏繞以利蔓延')],layout:'single',slides:2,
   pts:['植物行固著生活，仍會因環境刺激表現向性與傾性運動，以獲得充足的陽光與水。','<b>向性</b>：生長方向與刺激方向有關。','光 → <b>向光性</b>；重力 → <b>向地性</b>；藤本植物的嫩莖或捲鬚接觸物體 → <b>向觸性</b>，彎曲纏繞以攀緣至陽光充足處。','向性屬於<b>生長</b>反應，多與生長素分布不均造成兩側生長速率不同有關。'],
@@ -511,7 +521,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -521,13 +531,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

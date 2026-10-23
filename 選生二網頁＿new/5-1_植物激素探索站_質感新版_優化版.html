@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'植物激素的特性',T2:'生長素',T3:'吉貝素',T4:'細胞�
 const TAGL={T1:'l1',T2:'l2',T3:'l6',T4:'l8',T5:'l9',T6:'l10',T7:'l12'};
 const GROUPS={g1:'植物激素與生長素',g2:'吉貝素與細胞分裂素',g3:'離層酸與乙烯'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>什麼是植物激素</h4><p>植物的生長發育除了受環境刺激，也受自身製造的<b>化學物質</b>影響。<b>植物激素</b>是一群有機物質，只要<b>極微量</b>就能明顯改變生長發育。</p></div><div class=\"ex\"><h4>三個特性</h4><ul><li>作用有多個面向：同一種激素，會影響不同生長階段，或和環境刺激引起的反應（如向光性）有關。</li><li>被子植物常見五類：<b>生長素（IAA）、吉貝素（GA）、細胞分裂素（CK）、離層酸（ABA）、乙烯</b>。</li><li>不同激素在調節生長發育上扮演不同角色。</li></ul></div><div class=\"ex\"><h4>植物激素與動物激素的差異</h4><ul><li><b>動物</b>：由<b>特定腺體</b>生成，主要<b>隨血液運送</b>。</li><li><b>植物</b>：沒有專一腺體，在某一部位生成或合成，藉<b>擴散或維管束</b>運送到目標細胞與組織，例如莖頂的生長素向下傳送。</li></ul></div>", "l2": "<div class=\"ex g\"><h4>生長素：從達爾文父子到 IAA</h4><p>生長素的發現來自英國達爾文父子對<b>芽鞘向光性</b>的研究（見探討活動 5-1）。</p></div><div class=\"ex\"><h4>種類與產生部位</h4><ul><li>天然的是<b>吲哚乙酸（IAA）</b>；人工合成的有 <b>NAA、2,4-D</b>。</li><li>主要在<b>莖頂、幼葉、根尖及發育中的種子</b>等幼嫩部位生成，再運送到其他部位。</li><li>作用：促進<b>細胞的延長</b>與<b>組織的特化</b>。</li></ul></div><div class=\"ex\"><h4>讀圖 5－1：濃度效應</h4><p>IAA 濃度對根、芽、莖有不同反應，三條曲線的最適濃度不同，<b>根最敏感</b>。對莖是促進生長的濃度，對根可能是<b>抑制</b>，這也是莖與根向性不同的原因。橫軸是濃度的對數，所以每一格是 10 倍。</p></div>", "l3": "<div class=\"ex g\"><h4>向光性怎麼發生</h4><p>植物對環境刺激產生的生長反應（向性），與生長素的分布有關。</p></div><div class=\"ex\"><h4>圖 5－2：莖的向光性</h4><ul><li>光從單側照射時，莖的<b>背光側 IAA 含量較高</b>。</li><li>背光側細胞延長較快、向光側較慢，兩側生長速率不同。</li><li>於是莖就<b>彎向光源</b>生長，稱為<b>向光性</b>。</li></ul></div><div class=\"ex\"><h4>延伸</h4><p>莖的背地彎曲生長（負向地性），也主要受 IAA 影響。注意：是光照方向改變了生長素的分布，不是生長素「怕光」。</p></div>", "l4": "<div class=\"ex g\"><h4>頂芽優勢</h4><p>頂芽存在時，頂芽合成 <b>IAA 並向下運輸</b>，抑制下方<b>側芽</b>生長。若切除頂芽，側芽就開始萌發、長出分枝。</p></div><div class=\"ex\"><h4>讀圖 5－3（辣椒）</h4><ul><li><b>a 不處理（對照組）</b>：側芽不生長（或些微生長）。</li><li><b>b 去除頂芽（實驗組）</b>：側芽生長明顯。</li><li><b>c 去頂後在切口塗 NAA（羊毛脂）</b>：側芽又只有些微生長。</li></ul></div><div class=\"ex\"><h4>讀圖 5－4（草莓）</h4><ul><li>草莓表面的小果實（瘦果）會產生生長素，促進<b>花托</b>發育。</li><li>剔除中間一圈小果實 → 花托中間凹陷；剔除全部 → 花托不發育。</li><li>剔除全部後再施加 <b>NAA</b> → 花托發育正常。</li></ul></div>", "l5": "<div class=\"ex g\"><h4>生長素在農業與園藝的應用</h4><p>生長素的許多作用被用在農業。</p></div><div class=\"ex\"><h4>四個應用</h4><ul><li>刺激<b>形成層</b>細胞分裂，有助於<b>嫁接</b>成功率。</li><li>促進<b>不定根</b>形成，提高<b>扦插</b>繁殖成功率。</li><li><b>抑制離層</b>形成，避免果實未成熟前提早落果；促進果實發育。</li><li>人工合成的 <b>2,4-D</b> 可作<b>除草劑</b>，除去田間的雙子葉雜草，保全單子葉的農作物（玉米、水稻、小麥等）。</li></ul></div><div class=\"ex\"><h4>為什麼 2,4-D 能選擇性除草</h4><p>單、雙子葉植物對 2,4-D 的敏感度不同，雙子葉的雜草會因過量的生長素而異常生長死亡，單子葉作物受影響較小。</p></div>", "l6": "<div class=\"ex g\"><h4>吉貝素：從臺灣的稻田發現</h4><p>吉貝素（GA）的發現與臺灣的水稻栽種歷史有深刻淵源。GA 主要由<b>根尖和莖頂的初級分生組織、嫩芽、種子內的胚</b>產生。</p></div><div class=\"ex\"><h4>發現歷程</h4><ul><li>日治時期臺灣總督府農業試驗場研究「水稻<b>馬鹿苗病</b>」：染病稻苗莖部不正常抽長（徒長）、無法結實。</li><li>1912 年澤田兼吉推論是致病真菌分泌物質造成；1926 年黑澤英一證實真菌培養液能造成同樣症狀。</li><li>1934 年藪田貞治郎成功分離出此物質，定名為<b>吉貝素</b>。</li></ul></div><div class=\"ex\"><h4>促進節間生長（圖 5－5）</h4><p>GA 促進細胞分裂與延長，造成莖的節間生長、讓植物長高。<b>矮性植物</b>（天生缺乏 GA，如矮性捲心甘藍）添加 GA 後明顯長高，與野生植株相似；正常植株則效果不明顯。</p></div>", "l7": "<div class=\"ex g\"><h4>吉貝素促進萌發與開花</h4><p>GA 除了讓莖長高，還和種子萌發、開花、果實發育有關。</p></div><div class=\"ex\"><h4>大麥種子萌發（圖 5－6）</h4><ul><li>① 種子吸水，<b>胚產生 GA</b>。</li><li>② GA 從胚芽與子葉擴散進入<b>胚乳</b>。</li><li>③ 胚乳外層的<b>糊粉層</b>被促進分泌<b>水解酵素</b>，分解胚乳中大分子的澱粉與蛋白質。</li><li>④ 形成葡萄糖、胺基酸等小分子，被子葉吸收，供幼苗生長。</li></ul></div><div class=\"ex\"><h4>開花與果實（圖 5－7、5－8）</h4><ul><li>在適當光照時間下，GA 能刺激長出花芽、促進開花，如誘導<b>彩葉甘藍</b>開花。</li><li>GA 使葡萄花穗<b>節間變長</b>、花間距增加，提供果實更多生長空間，果實長得肥大多汁。</li></ul></div>", "l8": "<div class=\"ex g\"><h4>細胞分裂素（CK）</h4><p>CK 是一群含<b>腺嘌呤</b>的植物激素，能促進<b>細胞分裂</b>。1940 年代美國科學家斯科格從<b>椰汁</b>中分離出可促進細胞分裂的嘌呤類物質。CK 大部分生成於<b>萌發中的種子、根尖</b>等分裂旺盛的部位。</p></div><div class=\"ex\"><h4>主要功能</h4><ul><li>促進幼苗與<b>側芽</b>生長：在側芽施加 CK，側芽就會生長（與生長素的頂芽優勢相互拮抗）。</li><li>促進開花（洋桔梗、蘋果、荔枝）。</li><li><b>延緩老化</b>（圖 5－9：噴施 CK 的菸草葉老化較慢），採收後的花果可用 CK 處理延長保鮮。</li></ul></div><div class=\"ex\"><h4>組織培養（圖 5－10）</h4><p>CK 與生長素<b>搭配比例</b>決定分化方向：比例適當時形成<b>癒傷組織</b>；<b>生長素比例高</b>時長根；<b>CK 比例高</b>時長芽。</p></div>", "l9": "<div class=\"ex g\"><h4>離層酸（ABA）：名字其實取錯了</h4><p>科學家研究落葉原因時，從落葉中萃取出一種酸性物質，命名為<b>離層酸</b>。後來發現真正造成離層的主因是<b>乙烯</b>，不是離層酸。ABA 主要功能是<b>抑制細胞生長</b>。</p></div><div class=\"ex\"><h4>促進芽與種子休眠（休眠素）</h4><ul><li>未成熟種子有較高濃度 ABA 抑制萌發，讓種子能完全成熟、儲存更多養分。</li><li>種子打破休眠後，<b>ABA 下降、GA 上升</b>，促進萌發，兩者對種子萌發<b>拮抗</b>。</li><li>水筆仔種子內缺乏 ABA，無法抑制萌發，所以在母株上就形成<b>胎生苗</b>（圖 5－11）。</li></ul></div><div class=\"ex\"><h4>逆境激素</h4><ul><li>缺水時葉片產生 ABA，使<b>氣孔關閉</b>；根部也產生 ABA，由木質部送到葉片，維持氣孔關閉，減少蒸散。</li><li>ABA 也抑制莖的伸長，與生長素拮抗。</li></ul></div>", "l10": "<div class=\"ex g\"><h4>乙烯：氣態的植物激素</h4><p>乙烯是氣體，植物體<b>大部分細胞</b>都能生成，具有促使果實成熟、抑制細胞伸長、使細胞計畫性死亡、促進老化與離層形成等功能（圖 5－12）。</p></div><div class=\"ex\"><h4>三個作用</h4><ul><li><b>促進果實成熟</b>：成熟的蘋果釋出乙烯，可使旁邊未成熟的奇異果、木瓜變甜變軟，所謂「一顆爛蘋果壞了一箱好蘋果」。因此乙烯又稱<b>果實成熟激素</b>。</li><li><b>抑制細胞伸長、使莖粗短</b>：幼苗出土時抑制胚軸伸長、使胚軸加粗，有助幼苗成長茁壯。</li><li><b>細胞計畫性死亡</b>：長期淹水缺氧時，玉米根皮層部分細胞計畫性死亡形成空隙，利於氣體交換。</li></ul></div>", "l11": "<div class=\"ex g\"><h4>葉片怎麼老化、脫落</h4><p>在葉片從生長到老化、脫落的過程中，主要由三種激素調控：<b>乙烯促進老化</b>，<b>IAA 與 CK 延緩老化</b>，彼此拮抗（圖 5－13）。</p></div><div class=\"ex\"><h4>過程</h4><ul><li>① <b>幼葉</b>內 IAA 濃度高，降低葉柄基部細胞對乙烯的敏感度，避免形成離層。</li><li>② 葉老化時，葉肉細胞不再生成 IAA，<b>乙烯增加</b>，葉柄基部形成<b>離層</b>。</li><li>③ 老葉隨之脫落。</li></ul></div><div class=\"ex\"><h4>保鮮的應用</h4><p>農產品和花卉為了減少採收後的消耗，會<b>預冷降溫</b>，藉低溫減少乙烯作用；切花保鮮劑則加入<b>乙烯抑制劑</b>。乙烯合成途徑由<b>楊祥發</b>發現，稱為<b>楊氏循環</b>。</p></div>", "l12": "<div class=\"ex g\"><h4>一張總表整理五種激素</h4><p>這是本節的總整理，依「種子萌發、植物生長、開花結果」三個時期分類。</p></div><div class=\"ex\"><h4>分時期看</h4><ul><li><b>種子萌發</b>：GA 促進、ABA 抑制。</li><li><b>植物生長</b>：IAA 抑制側芽（頂芽優勢）、CK 促進側芽；GA 促進節間生長；ABA 使氣孔關閉、抑制生長；乙烯使莖粗短、促進老化。</li><li><b>開花結果</b>：GA 促進甘藍開花、CK 促進洋桔梗等開花；IAA 與 GA 促進果實生長；乙烯促進成熟；IAA、CK 抑制果實老化與落果。</li></ul></div><div class=\"ex\"><h4>拮抗作用</h4><p>兩種激素對同一現象有<b>相反</b>的效果，稱拮抗。例子：IAA 與 CK（側芽生長）、GA 與 ABA（種子萌發）、CK 與乙烯（葉片老化）。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'植物激素：微量的化學訊號',src:'課本 P138 知識補給站｜PPT 第 2–3 頁',fig:[B('ks0','知識補給站：植物激素與動物激素的差異')],layout:'single',slides:2,
   pts:['植物的生長發育受環境刺激與體內<b>化學物質</b>影響；植物激素是<b>有機物、含量極微</b>即可調節生長發育。','同一激素對不同階段、細胞、濃度有不同影響。','常見五類：<b>生長素（IAA）、吉貝素（GA）、細胞分裂素（CK）、離層酸（ABA）、乙烯</b>。','植物<b>沒有專一腺體</b>，激素以<b>擴散或維管束</b>運送（動物激素由腺體分泌、經血液運送）。'],
@@ -511,7 +521,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -521,13 +531,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

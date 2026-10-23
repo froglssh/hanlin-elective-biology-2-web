@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'營養繁殖',T2:'全潛能性',T3:'組織培養',T4:'無性與�
 const TAGL={T1:'l1',T2:'l2',T3:'l3',T4:'l5'};
 const GROUPS={g1:'營養繁殖與全潛能性',g2:'組織培養'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>無心插柳柳成蔭</h4><p>「無心插柳，柳成蔭」說的是：一根柳條就能長成一棵柳樹。單一植物個體通常可由<b>根、莖、葉等構造的片段</b>，再生出許多<b>遺傳特性與原植株完全相同</b>的子代，稱為<b>營養繁殖</b>，屬於<b>無性生殖</b>（圖 4－1）。</p></div><div class=\"ex\"><h4>圖 4－1 的四個例子</h4><ul><li>a　柳樹的<b>莖</b>。</li><li>b　落地生根的<b>葉</b>（葉緣長出小植株）。</li><li>c　蓮花的<b>塊莖</b>（蓮藕）。</li><li>d　大理花的<b>塊根</b>。</li></ul></div><div class=\"ex\"><h4>生態上的好處</h4><p>在適合生長的環境中，無性生殖能<b>大量增加個體數目</b>，快速擴展生存領域。</p></div>", "l2": "<div class=\"ex g\"><h4>為什麼植物比動物更容易無性生殖</h4><p>相較於脊椎動物，植物較容易進行無性生殖，關鍵是多數細胞仍<b>能被誘導而分裂與特化</b>，這種現象稱為細胞的<b>全潛能性</b>。</p></div><div class=\"ex\"><h4>多年生植物的修補（圖 4－2）</h4><ul><li>多年生植物的莖與根頂端分生組織，以及形成層，可持續產生新組織，使個體長高、加粗。</li><li>實例：小葉欖仁主幹因颱風折斷，部分樹皮剝落；一個月後，<b>仍有殘留樹皮處</b>長出新枝。</li></ul></div><div class=\"ex\"><h4>新枝是怎麼來的</h4><p>樹皮內<b>已經成熟的活細胞</b>（皮層細胞、韌皮部細胞）再度分裂，特化成莖的頂端分生組織，再分化成新的莖、葉組織，最後突出樹皮形成新分枝。這就是全潛能性的表現。</p></div>", "l3": "<div class=\"ex g\"><h4>組織培養：在試管裡長出新植株</h4><p>在<b>無菌環境</b>中，用含特定<b>植物激素與營養成分</b>的培養基，誘導一小塊活組織生長（圖 4－3，以蘭花為例）。</p></div><div class=\"ex\"><h4>六個步驟</h4><ul><li>① 取成熟植株的活組織，經特殊處理。</li><li>② 用培養基培養。</li><li>③ 細胞分裂形成<b>未分化的細胞團</b>，稱<b>癒傷組織</b>。</li><li>④ 細胞分化形成<b>根、芽</b>等構造。</li><li>⑤ 植物體長成小苗。</li><li>⑥ 移出培養基，經環境適應成為<b>複製個體</b>。</li></ul></div><div class=\"ex\"><h4>用途</h4><p>可大量產生選定優良品種的複製個體，提高收穫；也用在雜交、基因改造，以及永續保存優良品種。田間扦插甘蔗枝條、甘藷藤，也是同樣的原理。</p></div>", "l4": "<div class=\"ex g\"><h4>兩個歷史發現</h4><p>這張知識補給站講組織培養與全潛能性是怎麼發現的。</p></div><div class=\"ex\"><h4>兩個年代</h4><ul><li><b>1885 年・德國胡斯</b>：最早分離出部分雞胚組織，放在保溫的生理食鹽水中培養長達 13 天，建立了「把活組織分離到試管中培養」的基礎原理。</li><li><b>1902 年・奧地利哈伯蘭德</b>：提出植物細胞的<b>全潛能性</b>（totipotentiality）。</li></ul></div><div class=\"ex\"><h4>全潛能性的意思</h4><p>哈伯蘭德認為：理論上，每個植物細胞都含有個體發育所需的全部遺傳因子，<b>只要條件許可，所有植物細胞都可發育成完整植株</b>。藉由組織培養，就能把分離出來的活細胞或組織獨立培養成完整個體。</p></div>", "l5": "<div class=\"ex g\"><h4>無性生殖與有性生殖：各有優缺點</h4><p>植物可用無性或有性方式繁衍後代，各有利弊，這也是本章習題會問的比較。</p></div><div class=\"ex\"><h4>無性生殖</h4><ul><li><b>優點</b>：快速產生大量子代，<b>保持親代的優良特性</b>。</li><li><b>缺點</b>：子代遺傳組成相同，<b>不能適應多變的環境</b>。</li></ul></div><div class=\"ex\"><h4>有性生殖</h4><ul><li><b>優點</b>：子代基因多樣性高，環境多變時仍有可存活的個體。</li><li><b>缺點</b>：產生子代的效率較慢。</li></ul></div><div class=\"ex\"><h4>農業上怎麼搭配</h4><p>育種時用有性生殖產生變異、篩選新品種，再用組織培養（無性生殖）量產，保留新品種的特徵，這在 4-2 最後的「植物生殖的應用」會看到。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'營養繁殖（圖 4-1）',src:'課本 P108 圖 4-1｜PPT 第 1–2 頁',fig:[B('f1','圖 4-1 營養繁殖的例子'),B('willow','無心插柳，柳成蔭')],layout:'pair',slides:2,
   pts:['「無心插柳，柳成蔭」：一根柳條即可長成一棵柳樹。','單一植物個體可藉<b>根、莖、葉</b>等構造的片段，再生出許多與原來植株<b>遺傳特性完全相同</b>的子代——<b>營養繁殖</b>，屬<b>無性生殖</b>。','例：(a) 柳樹的莖；(b) 落地生根的葉；(c) 蓮花的塊莖（蓮藕）；(d) 大理花的塊根。','在適宜環境中，可藉無性生殖大量增加個體數目，快速擴展生存領域。'],
@@ -479,7 +489,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -489,13 +499,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

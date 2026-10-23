@@ -236,6 +236,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -281,7 +290,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'雷迪實驗與變因',T2:'肉汁實驗之爭',T3:'內孢子',T4
 /* ---------- 圖解資料 ---------- */
 const GROUPS={g1:'兩種主張・雷迪',g2:'微生物之爭',g3:'巴斯德與判決'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>先釐清兩個名詞</h4><p><b>無生源說</b>（自然發生說）認為生命可以從<b>不具生命的物質</b>中自然產生；<b>生源說</b>則主張<b>所有新生命都來自親代的生殖</b>。兩派爭論了好幾個世紀。</p></div><div class=\"ex\"><h4>無生源說從哪裡來？</h4><ul><li>古人看到「腐草化螢、腐肉生蛆」，覺得生物像是從腐敗的東西裡冒出來。</li><li>古希臘的亞里斯多德（384–322 B.C.）認為池底淤泥可以產生小生物。</li><li>17 世紀初，比利時的凡赫芒認為髒汙的衣物會孵育出小鼠。</li></ul></div><div class=\"ex\"><h4>讀這一頁的重點</h4><p>兩種主張都是從「觀察」出發，差別在<b>怎麼解釋看到的現象</b>。要分出誰對，不能只靠想像，必須設計實驗來檢驗，這就是下一張雷迪的故事。</p></div>", "l2": "<div class=\"ex g\"><h4>雷迪怎麼想</h4><p>1668 年，義大利醫師雷迪看到蒼蠅常繞著腐肉飛，不久腐肉就生出蛆。他提出<b>假說</b>：蛆是蒼蠅產卵、卵孵化而來，而不是腐肉變出來的。</p></div><div class=\"ex\"><h4>讀圖 1－1：三瓶肉塊</h4><ul><li><b>a 瓶（口敞開）</b>：蒼蠅進得去，肉塊腐敗，出現蛆。</li><li><b>b 瓶（蓋緊蓋子）</b>：蒼蠅進不去，肉塊同樣腐敗，沒有蛆。</li><li><b>c 瓶（覆蓋紗布）</b>：空氣可通過、蒼蠅進不去，肉塊腐敗，沒有蛆。</li></ul></div><div class=\"ex\"><h4>比較出什麼</h4><p>三瓶的肉都腐敗了，可見「腐敗」跟有沒有蛆無關；有沒有蛆，取決於<b>蒼蠅能不能接觸到肉</b>。結論：蛆是由蒼蠅而來，不是自然發生。</p></div><div class=\"ex\"><h4>為什麼要多一個紗布瓶</h4><p>紗布讓空氣能進出，卻擋住蒼蠅。這樣就能分辨：沒有蛆是因為「沒有蒼蠅」，而不是因為「沒有空氣」。</p></div>", "l3": "<div class=\"ex g\"><h4>用現代實驗設計檢視雷迪</h4><p>課本的腦力激盪，是請你用「對照組、實驗組、變因」的語言重新看一次圖 1－1，這是理解科學方法最好的練習。</p></div><div class=\"ex\"><h4>把圖 1－1 對上實驗設計</h4><ul><li><b>對照組</b>：a 瓶，維持肉塊暴露的原始狀態。</li><li><b>實驗組</b>：b 瓶、c 瓶，分別限制蒼蠅（與空氣）的進入。</li><li><b>操縱變因</b>：瓶口的處理方式（敞開、蓋緊、紗布）。</li><li><b>應變變因</b>：肉塊上有沒有出現蛆。</li><li><b>控制變因</b>：肉的種類與大小、瓶子、放置地點與天數等。</li></ul></div><div class=\"ex\"><h4>想進一步證明「是蒼蠅產卵」</h4><p>可以增加的做法，例如：觀察蒼蠅是否真的在肉上產卵、把卵取出另外培養看會不會長成蛆，或者每組重複多次，讓結果更可信。這些都是為了把「蒼蠅產卵」和其他可能原因分開。</p></div>", "l4": "<div class=\"ex g\"><h4>雷迪之後，為什麼爭論沒有停？</h4><p>雖然雷迪證明了「蛆」來自蒼蠅，但當時多數學者仍相信<b>某些微小的生物</b>可以自然發生。</p></div><div class=\"ex\"><h4>讓無生源說根深蒂固的原因</h4><ul><li>1670 年代，荷蘭的雷文霍克用自製顯微鏡看胡椒浸液，發現許多會運動的微小生物。</li><li>食物與果汁久放會腐敗並出現微生物，是日常生活經驗。</li></ul></div><div class=\"ex\"><h4>乾草浸液實驗的爭議</h4><ul><li>1718 年約伯勒：乾草浸液煮沸後<b>立刻封閉</b>，不長微生物；不封閉則被空氣汙染而混濁。</li><li>其他科學家重做，煮沸、封閉，但培養較久，<b>仍然長出微生物</b>。</li></ul></div><div class=\"ex\"><h4>這個矛盾的關鍵</h4><p>同樣的實驗為何不同結果？答案藏在乾草裡的一種細菌，下一張的「知識補給站」會解答。</p></div>", "l5": "<div class=\"ex g\"><h4>謎底：內孢子</h4><p>乾草中常有<b>枯草桿菌</b>。它在惡劣環境下會形成<b>內孢子</b>，是一種孢子壁很厚、耐高溫和乾旱的休眠構造。環境回復適合時，內孢子能重新萌發，長出新細胞並繼續分裂。</p></div><div class=\"ex\"><h4>為什麼兩種結果都合理</h4><ul><li><b>約伯勒</b>：煮沸後立刻封瓶，瓶中氧氣很少，內孢子不易萌發，而枯草桿菌又是好氧菌，所以沒長微生物。</li><li><b>其他科學家</b>：煮沸後沒立刻封瓶，浸液含較多氧氣，加上培養時間長，內孢子萌發而繁殖，於是長出微生物。</li></ul></div><div class=\"ex\"><h4>巴斯德的做法</h4><p>巴斯德等人改用<b>肉汁或果汁</b>，煮沸就能完全殺菌，沒有內孢子的干擾，實驗結果才清楚。孔恩要到 1876 年才發現內孢子，比約伯勒的實驗晚了一百多年。</p></div><div class=\"ex\"><h4>延伸一個小知識</h4><p>內孢子休眠最久的紀錄，來自一塊 2 億 5 千萬年前的岩鹽晶體水泡，取出培養後竟然還能萌發繁殖。</p></div>", "l6": "<div class=\"ex g\"><h4>同樣是煮肉汁，結論卻相反</h4><p>1745 年，英國的尼丹與義大利的司巴蘭贊尼分別做了肉汁實驗，兩人只差「煮完之後怎麼處理瓶子」。</p></div><div class=\"ex\"><h4>讀圖 1－2</h4><ul><li><b>尼丹</b>：肉汁煮沸，瓶口保持開放、室溫下冷卻，再用軟木塞封口。數日後肉汁混濁，長出微生物，他據此支持<b>無生源說</b>。</li><li><b>司巴蘭贊尼</b>：認為冷卻時空氣中的微生物會落入肉汁，所以煮沸後<b>立刻燒融封口</b>。數日後肉汁保持澄清，支持<b>生源說</b>。</li></ul></div><div class=\"ex\"><h4>為什麼還是沒有定論</h4><p>無生源說的學者反駁：瓶子立刻封口，會使瓶中缺乏空氣流通，而空氣是生物生長的必需要素。所以微生物沒長，可能只是因為缺空氣，雙方依然僵持。</p></div><div class=\"ex\"><h4>看出問題了嗎</h4><p>司巴蘭贊尼的瓶子同時改變了兩件事：<b>阻擋塵埃</b>，也<b>阻擋空氣</b>。這個漏洞要等到鵝頸瓶才補上。</p></div>", "l7": "<div class=\"ex g\"><h4>巴斯德登場：從葡萄酒切入</h4><p>1850 年代，法國微生物學家巴斯德研究釀酒。他用針筒從葡萄皮下抽取葡萄汁，發現<b>沒有酵母菌的葡萄汁無法發酵產生酒精</b>。</p></div><div class=\"ex\"><h4>他的推論</h4><ul><li>葡萄皮上有酵母菌，酵母菌是釀酒成功的關鍵。</li><li>酵母菌不會無中生有，必須靠<b>繁殖</b>來增加，所以他支持生源說。</li></ul></div><div class=\"ex\"><h4>蒲歇的反駁（1858 年）</h4><ul><li>蒲歇比巴斯德年長、學術地位也高，他以人造水製作乾草浸液，通入由氮、氧混合的人造空氣，結果仍有微生物，因此認為生命可以自然發生。</li><li>巴斯德指出：蒲歇的許多器械沒有澈底消毒，微生物可能是殘留的。</li></ul></div><div class=\"ex\"><h4>學習重點</h4><p>兩人用同樣的現象得出相反結論，這時比的是<b>實驗有沒有嚴格排除汙染</b>。這也為 1864 年更嚴謹的實驗鋪路。</p></div>", "l8": "<div class=\"ex g\"><h4>1864：先證明「微生物來自空氣」</h4><p>巴斯德先<b>假設微生物來自空氣中的塵埃</b>，然後把肉汁放進燒瓶中煮沸消毒。</p></div><div class=\"ex\"><h4>讀圖 1－3(a)</h4><ul><li><b>立刻封口</b>：即使放很久，肉汁也不會長出微生物。</li><li><b>打開封口、暴露在空氣中</b>：肉汁很快長出微生物。</li></ul></div><div class=\"ex\"><h4>他的結論</h4><p>肉汁會長出微生物，是因為空氣中的微生物落入肉汁中滋生。</p></div><div class=\"ex\"><h4>但反對者還是不服</h4><p>封口的瓶子同時也讓空氣不流通，所以「沒長微生物」仍可解釋成缺乏空氣。要真正說服對方，還需要<b>只擋塵埃、不擋空氣</b>的設計，答案在下一張。</p></div>", "l9": "<div class=\"ex g\"><h4>經典的鵝頸瓶</h4><p>為了排除「空氣不流通」的疑慮，巴斯德把玻璃瓶頸拉細，燒成<b>鵝頸狀</b>。空氣可以經由開口自由進出，空氣中的塵埃卻會停在鵝頸下方的彎曲處，不會碰到肉汁。</p></div><div class=\"ex\"><h4>讀圖 1－3(b)(c)</h4><ul><li><b>鵝頸瓶不動</b>：不管放多久，瓶內都不長微生物。</li><li><b>把鵝頸切斷</b>：瓶口直接暴露，不久就長出微生物。</li><li>圖 c 的燒瓶現在仍存放在法國的巴斯德研究所，一百多年來封口的瓶中依然沒有微生物。</li></ul></div><div class=\"ex\"><h4>為什麼這個設計有力</h4><p>它同時滿足兩個條件：<b>空氣流通</b>（排除反對意見），又<b>擋住塵埃</b>。結果沒有微生物，說明肉汁中的微生物來自空氣中的塵埃，而不是肉汁自己產生的。</p></div>", "l10": "<div class=\"ex g\"><h4>把整條時間軸讀一次</h4><p>圖 1－4 把爭論的歷程排成年表，往上是生源說，往下是無生源說，一眼就能看出兩派的來回交鋒。</p></div><div class=\"ex\"><h4>兩邊的主要證據</h4><ul><li><b>無生源說</b>：亞里斯多德（350 B.C.，淤泥生小生物）、凡赫芒（衣物孵出小鼠）、尼丹（1745，肉汁出現微生物），以及蒲歇與其他學者（認為司巴蘭贊尼與巴斯德的實驗缺乏空氣流通）。</li><li><b>生源說</b>：雷迪（1668，蛆來自蒼蠅）、約伯勒（1718，乾草浸液煮沸立刻封口）、司巴蘭贊尼（重複尼丹實驗並立即密閉）、巴斯德（1864，證明肉汁中的微生物來自空氣）。</li></ul></div><div class=\"ex\"><h4>總結</h4><p>巴斯德的鵝頸瓶實驗，為生源說提出無可反駁的證明，澈底終結了長久的爭議。也就是說，<b>現今所有生物都來自它的親代</b>。</p></div><div class=\"ex\"><h4>下一個問題</h4><p>生源說只能說明「現在的生物從哪裡來」，卻沒回答<b>地球上第一個生命如何出現</b>，這就是 1-2 要談的化學演化。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'兩種主張：無生源說與生源說',src:'課本 P8｜PPT 第 2–3 頁',fig:[B('k2_4','無生源說'),B('k3_5','生源說')],layout:'stack',slides:2,
   pts:['<b>無生源說（自然發生說）</b>：觀察到「腐草化螢、腐肉生蛆」，認為有些生命可從不具生命的物質中自然產生。','亞里斯多德（384–322 B.C.）：池底淤泥可以產生小生物。','凡赫芒（1580–1644，比利時）：髒汙的衣物中會孵育出小鼠。','<b>生源說</b>：所有新生命都是由親代經生殖產生的。'],
@@ -515,7 +525,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -525,13 +535,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

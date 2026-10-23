@@ -236,6 +236,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -281,7 +290,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -359,6 +368,7 @@ const TAGL={T1:'l1',T2:'l4',T3:'l6',T4:'l6',T5:'l9',T6:'l10',T7:'l11'};
 /* ---------- 圖解資料 ---------- */
 const GROUPS={g1:'起源假說・原生湯',g2:'化學演化的實驗證據',g3:'原核細胞的形成'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>問題升級了</h4><p>巴斯德證明「現今的生物都來自親代」，但這句話無法回答：<b>地球上第一個生命從哪裡來？</b>學者提出的假說大致分成三大類。</p></div><div class=\"ex\"><h4>三種假說</h4><ul><li><b>神創論</b>：生命由超自然或神聖的力量創造出來。</li><li><b>外太空起源說</b>：地球生命是由外太空掉落的隕石攜帶而來。</li><li><b>化學演化</b>：在特定條件下，經由化學與物理作用，由無機物演變成有機物，再形成複雜的化學分子，最後由無生物演化出生物。</li></ul></div><div class=\"ex\"><h4>本節聚焦哪一個</h4><p>課本以化學演化為主軸，因為它是目前<b>較容易在實驗室內進行驗證</b>的假說，後面米勒、卡爾文、福克斯的實驗都是在檢驗它。</p></div>", "l2": "<div class=\"ex g\"><h4>沒有生命的開頭</h4><p>地球剛形成時是一個熾熱的星球，並無生命。初始的空氣主要由氫、氦與一些小分子含氫化合物構成，但地心引力留不住這些氣體，不久就逸散到太空中。</p></div><div class=\"ex\"><h4>最早的大氣與海洋</h4><ul><li>地球逐漸冷卻，火山開始噴發，形成了最早的大氣與海洋。</li><li>大氣成分：大量的<b>氮、二氧化碳、水蒸氣</b>，加上少量的氫、一氧化碳、甲烷、氨與硫化氫。</li><li>閃電頻繁，又有來自宇宙的高能量輻射。</li></ul></div><div class=\"ex\"><h4>重點</h4><p>這樣的環境<b>完全不適合現今大多數生物生存</b>，卻可能正是化學演化發生的舞台。注意：當時的大氣並沒有氧氣。</p></div>", "l3": "<div class=\"ex g\"><h4>原生湯假說的由來</h4><p>1920 年代，研究酵素與代謝的俄國生化學家<b>歐帕林</b>提出：無機物可在原始地球的環境下形成有機物。</p></div><div class=\"ex\"><h4>兩位學者的想法</h4><ul><li><b>歐帕林</b>：最早的大氣充滿水蒸氣、二氧化碳、氮、氫、氨與甲烷，經長時間化學作用，無機物形成小分子有機物，再聚合成大分子有機物，最終產生第一個生命。</li><li><b>霍爾丹</b>（英國，專精族群遺傳與生物統計）：受達爾文演化論影響，認為「分子也可以演化」，有機分子累積在原始海洋中，形成濃稠的<b>原生湯</b>，第一個生命由此孕育。</li></ul></div><div class=\"ex\"><h4>評價</h4><p>兩人的想法不謀而合，但當時<b>只有假設，缺乏實驗證據</b>。後面的實驗就是補上這塊證據。</p></div>", "l4": "<div class=\"ex g\"><h4>圖 1－7：把假說拆成四步</h4><p>原生湯假說可以看成四個階段，由小到大、由簡單到複雜，一步一步往「生命」靠近。</p></div><div class=\"ex\"><h4>四個階段</h4><ul><li><b>①</b> 無機物（水、氨、氫、二氧化碳、甲烷）經長時間化學作用，形成<b>小分子有機物</b>：脂肪酸、胺基酸、嘌呤、嘧啶。</li><li><b>②</b> 小分子有機物聚合成<b>大分子有機物</b>：肽鏈、蛋白質。</li><li><b>③</b> 出現可攜帶訊息、成為<b>遺傳物質</b>的分子，例如 RNA。</li><li><b>④</b> 遺傳物質自我複製與催化，產生<b>初始細胞</b>。</li></ul></div><div class=\"ex\"><h4>讀圖技巧</h4><p>圖中的箭頭是「演化的順序」。後面幾張的實驗，分別在驗證其中的 ①、② 步，而 ③、④ 要到 1-2.2 才處理。</p></div>", "l5": "<div class=\"ex g\"><h4>為什麼原生湯假說被質疑</h4><p>原始大氣<b>無法提供穩定而持續的能源</b>，而且早期地球<b>缺乏臭氧層保護</b>。因此「累積足夠濃度的有機物形成原生湯」這件事開始受到懷疑，科學家陸續提出新模型來修正。</p></div><div class=\"ex\"><h4>1992 年的「氣泡模型」</h4><ul><li>海底火山噴發的氣泡往海面上升時，濃縮在氣泡內的<b>甲烷與氨</b>等分子發生化學反應，形成有機分子。</li><li>氣泡在海面破裂，釋出的簡單有機分子在大氣中受輻射與閃電激發而更複雜，隨雨水落入海洋，又被海浪激起的泡沫包埋。</li></ul></div><div class=\"ex\"><h4>這個模型的巧妙處</h4><p>上述程序<b>不斷重複</b>，有機物濃度愈堆愈高、結構愈變愈複雜，最後形成能孕育新生命的原生湯。它補足了「濃度怎麼累積」的缺口。</p></div>", "l6": "<div class=\"ex g\"><h4>第一個關鍵實驗</h4><p>1950 年代，美國學者米勒與尤里設計一組玻璃裝置（圖 1－8），想知道<b>原始大氣能不能自己產生有機物</b>。</p></div><div class=\"ex\"><h4>裝置怎麼運作</h4><ul><li>瓶中灌入水、氨、甲烷、氫，代表可能的原始大氣成分，並加熱。</li><li>用<b>電極放電</b>模擬閃電。</li><li>冷凝管讓水蒸氣冷卻成液體，流回裝置中。</li><li>一個星期後，冷卻的液體中出現了<b>胺基酸</b>。</li></ul></div><div class=\"ex\"><h4>結論</h4><p>這個實驗證明：在原始地球的環境下，<b>小分子有機物確實可能從無機物產生</b>。也就是驗證了圖 1－7 的第一步。</p></div>", "l7": "<div class=\"ex g\"><h4>換一種能量來源再試</h4><p>發現光合作用固碳反應的美國生化學家<b>卡爾文</b>（第 3 章會再見到他），在 1960 年做了另一個版本的實驗。</p></div><div class=\"ex\"><h4>他怎麼做、得到什麼</h4><ul><li>用<b>紫外線與 γ 射線</b>照射可能的原始地球大氣成分。</li><li>結果產生<b>胺基酸、脂肪酸、嘌呤、嘧啶</b>等小分子有機物。</li></ul></div><div class=\"ex\"><h4>意義</h4><p>米勒用的是電擊（閃電），卡爾文用的是輻射線，<b>兩種不同的能量都能得到小分子有機物</b>，為有機物的自然形成提供了初步證據，讓結論更有說服力。</p></div>", "l8": "<div class=\"ex g\"><h4>下一個問題：能不能變大</h4><p>米勒與尤里的實驗只做出胺基酸，但生命是由更複雜的分子組成。福克斯想知道：簡單的小分子，能不能聚合成大分子？</p></div><div class=\"ex\"><h4>福克斯的實驗（1958）</h4><ul><li>把數種胺基酸的混合物放入玻璃瓶，置於<b>無氧</b>狀態，以 170 °C 加熱 3 小時。</li><li>冷卻後取出內容物，加水沖洗並靜置。</li><li>隔天分析發現有<b>具肽鏈、類似蛋白質</b>的物質形成。</li></ul></div><div class=\"ex\"><h4>三個實驗合起來看</h4><p>米勒－尤里、卡爾文、福克斯的實驗共同顯示：無機物可能在原始地球環境下，逐漸產生構成生命的各種有機分子，為「生命出現的條件」提供了可能的證據。</p></div>", "l9": "<div class=\"ex g\"><h4>甲烷是有機物嗎？</h4><p>依化學定義，甲烷含有碳與氫，歸類為<b>有機物</b>。但它在沒有生命的早期地球就存在，主要來自火山噴發的氣體。可見「有機物」不一定要由生物產生。</p></div><div class=\"ex\"><h4>名稱與來歷</h4><ul><li>1776 年，義大利的伏打在沼澤淤泥中發現一種可燃氣體，稱為<b>沼氣</b>。</li><li>1866 年，德國化學家何夫曼正式命名為<b>甲烷</b>（methane）。</li></ul></div><div class=\"ex\"><h4>與現代環境的關係</h4><ul><li>現今大氣中甲烷僅約 0.000179%，卻是重要的溫室氣體。</li><li>同質量下，釋放後 100 年內的暖化影響是二氧化碳的 <b>28∼34 倍</b>，占全球暖化效應的 10∼12%。</li><li>主要來源：燃料開採，以及厭氧微生物代謝（沼澤、淤泥、動物排泄物、反芻動物腸胃道、垃圾掩埋場）。</li></ul></div>", "l10": "<div class=\"ex g\"><h4>從分子走向細胞</h4><p>生物由細胞構成，<b>細胞膜把內外隔開</b>，使代謝活動能在細胞內進行；生物還必須有能自我複製的遺傳分子。所以從有機分子演化出細胞，是邁向生命的重要歷程，先從膜開始。</p></div><div class=\"ex\"><h4>微球體（圖 1－11）</h4><ul><li>磷脂分子在水中受到有極性的水分子推擠，傾向聚集在一起，形成許多<b>中空球狀的微球體</b>。</li><li>微球體有類似脂雙層的構造，能區隔內外，與細胞膜功能相似。</li><li>在原生湯中，微球體可把有機分子包埋在內部，和外界環境隔開。</li></ul></div><div class=\"ex\"><h4>科學家的推測</h4><p>微球體很可能是演化出<b>細胞膜</b>的第一步。圖 b 是顯微鏡下的微球體。</p></div>", "l11": "<div class=\"ex g\"><h4>誰來當遺傳物質？</h4><p>細胞中複雜度夠、能攜帶訊息的分子有<b>蛋白質與核酸</b>兩類。但蛋白質不具配對和自我複製的特性，所以<b>核酸</b>成為遺傳物質的最佳候選者。</p></div><div class=\"ex\"><h4>RNA 先出現？</h4><ul><li>核酸有 DNA 與 RNA 兩類，核酸序列可儲存訊息，也能以互補配對的方式複製。</li><li>1981 年闕克首先發現具酵素催化功能的 RNA，能修飾、剪接其他 RNA；2009 年又有學者觀察到可自我複製的 RNA。</li><li>因此科學家認為 <b>RNA 極可能是最早出現的遺傳物質</b>。</li></ul></div><div class=\"ex\"><h4>後來為什麼換成 DNA</h4><p>RNA 在環境中的安定性不如 DNA，歷經演化，DNA 逐漸取而代之。至於現今用蛋白質酵素催化核酸複製，專一性很高，不太可能一次到位，應是<b>之後的演化過程</b>才逐漸建立。</p></div>", "l12": "<div class=\"ex g\"><h4>酵素一定是蛋白質嗎</h4><p>生物需要酵素來有效率地催化代謝，一般常見的酵素都由蛋白質構成。但闕克發現<b>有催化作用的 RNA 分子</b>，打破了這個印象。</p></div><div class=\"ex\"><h4>名稱怎麼來的</h4><ul><li>取 RNA（ribonucleic acid）英文名稱的前半段，加上酵素 enzyme 的後半段，合成 <b>ribozyme</b>（核糖核酸酵素）。</li><li>目前已發現數十種：有的切除 RNA 多餘部分，有的切割並重新組合 RNA 分子。</li></ul></div><div class=\"ex\"><h4>為什麼重要</h4><p>它顯示 RNA 能同時<b>儲存訊息與催化反應</b>，支持 RNA 是最早的遺傳物質。闕克因此獲得 <b>1989 年諾貝爾化學獎</b>。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'第一個生命從何而來：三大假說',src:'課本 P15｜PPT 第 2 頁',fig:[B('s02_02','原 PPT 第 2 頁：生命起源的三大假說')],layout:'single',slides:2,
   pts:['巴斯德證明現今生物都來自親代，但地球上「第一個生命」的起源仍然無解。','<b>神創論</b>：生命由超自然或神聖的力量創造。','<b>外太空起源說</b>：地球生命由外太空掉落的隕石攜帶而來。','<b>化學演化</b>：在特定條件下，經化學與物理作用由無機物演變為有機物，進而由無生物演化出生物；是目前較容易在實驗室驗證的假說。'],
@@ -531,7 +541,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -541,13 +551,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

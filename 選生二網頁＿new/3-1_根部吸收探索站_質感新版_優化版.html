@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'元素來源',T2:'根毛與吸收',T3:'菌根與根瘤',T4:'橫�
 const TAGL={T1:'l1',T2:'l2',T3:'l3',T4:'l5',T5:'l6',T6:'l7'};
 const GROUPS={g1:'3-1.1 吸收的構造',g2:'3-1.2 根中的橫向運輸'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>先問：植物的原料從哪裡來</h4><p>光合作用以<b>二氧化碳與水</b>為主要原料，植物從中取得<b>碳、氫、氧</b>三種元素。那生長發育需要的其他元素呢？</p></div><div class=\"ex\"><h4>氮、磷、鉀的來源</h4><ul><li>空氣中雖然有豐富的氮氣，但<b>植物不能直接利用</b>。</li><li>氮與土壤中的磷、鉀等礦物質元素一樣，必須以<b>無機鹽</b>的型式，隨著水由根吸收（如 NH₄⁺、NO₃⁻）。</li></ul></div><div class=\"ex\"><h4>這一節要解決的問題</h4><p>水與無機鹽要透過什麼構造進入根？進入後走哪條路到達木質部？本節分成「吸收的構造」與「根中的橫向運輸」兩段。</p></div>", "l2": "<div class=\"ex g\"><h4>根毛：吸收的主力</h4><p>根對水與無機鹽的吸收，以<b>具根毛的成熟區</b>能力最佳（圖 3－1）。根毛是表皮細胞向外延伸的突起。</p></div><div class=\"ex\"><h4>根毛的優勢</h4><ul><li>增加吸收的<b>表面積</b>。</li><li>能<b>深入土壤顆粒的間隙</b>，吸收周圍的水與無機鹽。</li></ul></div><div class=\"ex\"><h4>幼根表皮為什麼容易吸水</h4><ul><li>通常<b>沒有角質層</b>覆蓋。</li><li>細胞壁含較多<b>果膠</b>，黏性與親水性強，水分容易進入。</li><li>硝酸鹽、磷酸鹽等無機鹽，主要靠表皮細胞膜上的<b>運輸蛋白</b>以<b>主動運輸</b>吸收。</li></ul></div>", "l3": "<div class=\"ex g\"><h4>菌根：與真菌合作</h4><p>根吸收無機鹽，除了靠自身能力，還可以靠<b>共生</b>來補強。菌根是<b>植物與真菌共生</b>形成的構造。</p></div><div class=\"ex\"><h4>兩種類型（依菌絲能否穿透細胞壁）</h4><ul><li><b>外生菌根</b>：菌絲包覆在表皮細胞外（例：水晶蘭）。</li><li><b>內生菌根</b>：菌絲能穿透皮層細胞的細胞壁，形成叢枝狀菌絲（例：蘆筍）。</li></ul></div><div class=\"ex\"><h4>互利的關係</h4><p>真菌協助植物吸收多種無機鹽，使植物生長較好；植物則提供真菌<b>有機養分</b>。全世界約 <b>95%</b> 的植物種類都有菌根。圖中含菌根的南瓜幼苗，生長明顯優於缺少菌根者。</p></div>", "l4": "<div class=\"ex g\"><h4>根瘤：與細菌合作</h4><p><b>根瘤</b>是某些植物（如豆科）與<b>根瘤菌</b>（細菌）共生形成的構造。根瘤菌能把<b>氮氣轉變成含氮化合物</b>供植物利用，植物則提供根瘤菌有機養分。</p></div><div class=\"ex\"><h4>根瘤形成四步驟（圖 c 的 1～4）</h4><ul><li>① 根瘤菌感染<b>根毛</b>。</li><li>② 進入根部，皮層細胞分裂。</li><li>③ <b>周鞘細胞</b>也分裂，形成發育中的根瘤。</li><li>④ 根瘤具有維管束組織與感染區。</li></ul></div><div class=\"ex\"><h4>農業上的應用</h4><p>農民在休耕時種植豆科植物，下一期作物耕種前翻土掩埋，增加土壤的含氮量，這類植物俗稱<b>綠肥作物</b>。</p></div>", "l5": "<div class=\"ex g\"><h4>水與無機鹽進根後怎麼走</h4><p>水與溶解其中的無機鹽進入根後，先經皮層<b>橫向運輸</b>進入中柱，再由中柱內的維管束向上運輸。路線大致是：表皮 → 皮層 → 內皮 → 周鞘 → 木質部。</p></div><div class=\"ex\"><h4>兩條橫向路徑（圖 3－2）</h4><ul><li><b>共質體路徑</b>（a）：水進入表皮或皮層細胞內，經相鄰細胞之間的<b>原生質絲</b>，在細胞內穿過皮層到達內皮細胞。</li><li><b>質外體路徑</b>（b）：植物細胞膜外的空間稱<b>質外體</b>，水沿著<b>細胞壁與細胞間隙</b>直達內皮細胞外。</li></ul></div><div class=\"ex\"><h4>小提醒</h4><p>兩條路徑在運輸過程中<b>可以互相轉換</b>，並不是單選一條走到底。</p></div>", "l6": "<div class=\"ex g\"><h4>內皮的關卡：卡氏帶</h4><p>內皮細胞排列緊密，在上下左右相鄰細胞之間，細胞壁有加厚的<b>卡氏帶</b>，成分是<b>不透水的木質素或部分木栓質</b>。</p></div><div class=\"ex\"><h4>卡氏帶的作用</h4><ul><li>無論水走共質體還是質外體，到了內皮都<b>必須進入細胞內</b>才能到達中柱。</li><li>讓內皮細胞膜發揮<b>選擇性通透</b>：依離子濃度或生理需求，以被動或主動方式運輸無機鹽，再經原生質絲送入中柱。</li><li>阻擋<b>有害物質</b>經細胞間隙進入中柱，避免透過維管束擴及全株。</li><li>阻止無機鹽向外流出，維持中柱內<b>高滲透壓、低水勢</b>。</li></ul></div><div class=\"ex\"><h4>一句話整理</h4><p>卡氏帶像海關：所有物質都得「入關檢查」（穿過細胞膜），才能進入中柱。</p></div>", "l7": "<div class=\"ex g\"><h4>三個補充概念</h4><p>這張的知識補給站，補充了三個名詞：原生質體、卡氏帶的發現、水勢。</p></div><div class=\"ex\"><h4>原生質體與共質體</h4><ul><li><b>原生質體</b>：1880 年由德國植物學家漢斯坦提出，指植物細胞的內含物，<b>不包括細胞壁</b>。</li><li>相鄰活細胞間有貫穿細胞壁的原生質絲，使原生質相通，成為連續的共同體，稱<b>共質體</b>。</li></ul></div><div class=\"ex\"><h4>卡氏帶的發現</h4><p>19 世紀中葉，德國植物學家卡斯伯里首次描述根的內皮，發現其細胞壁有加厚現象，命名為「Schutzscheide」（防護套），後來稱卡氏帶。卡氏帶完全填滿內皮細胞間的空隙，使兩細胞的壁幾乎融合；有些內皮細胞壁除木質素外還多了<b>木栓質</b>。</p></div><div class=\"ex\"><h4>水勢怎麼用</h4><ul><li><b>水勢</b>是水移動的能力，水總是由<b>高水勢流向低水勢</b>，像水由高處往低處流。</li><li>溶質愈多，水勢愈低，吸水能力愈強。</li><li>水勢大小通常是：<b>土壤間隙 ＞ 表皮 ＞ 皮層 ＞ 中柱</b>，所以水能藉滲透作用從土壤擴散到中柱。</li></ul></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'植物需要的元素從哪裡來？',src:'課本 P70｜PPT 第 1–2 頁',fig:[B('s02_03','原 PPT 第 2 頁：元素的吸收型式與部位')],layout:'single',slides:2,
   pts:['光合作用以<b>二氧化碳與水</b>為主要原料，取得<b>碳、氫、氧</b>三種元素。','氮、磷、鉀等其他元素：空氣中雖有豐富氮氣，植物<b>不能直接利用</b>。','氮與磷、鉀一樣，必須以<b>無機鹽</b>的型式隨水由<b>根</b>吸收（如 NH₄⁺、NO₃⁻）。'],
@@ -501,7 +511,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -511,13 +521,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'根壓與泌溢',T2:'毛細作用',T3:'蒸散作用',T4:'氣孔�
 const TAGL={T1:'l1',T2:'l3',T3:'l4',T4:'l6',T5:'l7'};
 const GROUPS={g1:'水分運輸的三種動力',g2:'氣孔與蒸散'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>水往上走靠三種力</h4><p>進入中柱木質部的水，會<b>單向向上</b>運輸到植物體各部位。動力來自：<b>根壓、毛細作用、蒸散作用</b>。</p></div><div class=\"ex\"><h4>先看根壓（圖 3－3、3－4a）</h4><ul><li>把植物由莖基部切斷，一段時間後切口會流出汁液。</li><li>原因：根的中柱內<b>滲透壓較高、水勢較低</b>，水不斷由土壤滲入中柱，產生向上推擠的力量。</li><li>這種因滲透而產生的壓力稱為<b>根壓</b>，是根推動水分的基本動力。</li></ul></div><div class=\"ex\"><h4>讀圖 3－4 的方法</h4><p>圖分成 a、b、c 三個層次：a 根的吸收與根壓、b 莖的木質部毛細作用、c 葉的蒸散作用，由下而上對應水的旅程。</p></div>", "l2": "<div class=\"ex g\"><h4>清晨葉緣的水珠：泌溢</h4><p>夜晚溼度高、氣溫低時，氣孔關閉，蒸散作用減弱或暫停。</p></div><div class=\"ex\"><h4>現象怎麼來的</h4><ul><li>草本植物仍有<b>根壓</b>，水分持續被送到葉部。</li><li>多餘的水無法由氣孔蒸散，只好從<b>葉緣的排水孔</b>排出。</li><li>清晨就能看到葉緣（例如草莓葉）有整齊排列的水珠，這叫<b>泌溢</b>。</li></ul></div><div class=\"ex\"><h4>重要的區別</h4><p>泌溢與<b>根壓</b>有關，不是蒸散。草本植物可靠根壓運水；但數十公尺高的木本植物，只靠根壓推不到頂端，主要靠毛細作用與蒸散作用的拉力接力。</p></div>", "l3": "<div class=\"ex g\"><h4>毛細作用：細管裡的連續水柱</h4><p>木質部的<b>導管與管胞管徑細窄</b>，水分子與管壁之間有<b>附著力</b>，水分子之間又有<b>內聚力</b>（氫鍵），兩者共同產生毛細作用。</p></div><div class=\"ex\"><h4>效果</h4><ul><li>形成<b>從根、莖到葉的連續水柱</b>，持續向上輸送。</li><li>這也是為什麼木質部要有「管徑細小、管壁相連」的構造。</li></ul></div><div class=\"ex\"><h4>圖 3－4b 的看點</h4><p>圖中標出水的「附著力」與「內聚力」：前者是水貼著細胞壁，後者是水拉著水，兩種力讓水柱不容易斷。</p></div>", "l4": "<div class=\"ex g\"><h4>蒸散作用：主要動力</h4><p><b>蒸散作用</b>是指水蒸氣由植物體表面散失的過程，是水分運輸的<b>主要動力</b>（圖 3－4c）。</p></div><div class=\"ex\"><h4>拉力是怎麼產生的</h4><ul><li>水自葉表面蒸散後，對木質部中的水形成<b>負壓</b>，拉動葉肉細胞間隙的水。</li><li>木質部內的水滲出到葉肉細胞間隙，<b>牽引木質部中的連續水柱</b>，水就不斷從根部向上運輸到莖與葉。</li></ul></div><div class=\"ex\"><h4>一個重要的事實</h4><p>根所吸收的水，只有少部分供生長與代謝使用，<b>大部分都因蒸散而散失</b>。因為光合作用時氣孔要打開讓 CO₂ 進入，水蒸氣也同時從氣孔散失（圖 3－5）。</p></div>", "l5": "<div class=\"ex g\"><h4>氣孔：吃 CO₂ 也漏水</h4><p>植物行光合作用時，氣孔打開以利<b>二氧化碳進入葉內</b>，但同時<b>水蒸氣也會由氣孔散失</b>。這是植物的兩難：要吃 CO₂，就得付出失水的代價。</p></div><div class=\"ex\"><h4>氣孔的構造（圖 3－5）</h4><ul><li>氣孔由<b>一對保衛細胞</b>圍成。</li><li>保衛細胞<b>形狀的改變</b>，決定氣孔是打開還是關閉。</li><li>圖 a 是氣孔打開，圖 b 是氣孔關閉。</li></ul></div>", "l6": "<div class=\"ex g\"><h4>氣孔如何開、如何關</h4><p>氣孔開閉受環境因子影響，例如<b>藍光</b>。關鍵是保衛細胞的<b>鉀離子進出</b>，改變水勢與膨壓。</p></div><div class=\"ex\"><h4>開啟（植物含水量充足時）</h4><ul><li>保衛細胞膜上的<b>藍光受體</b>接受藍光 → <b>K⁺ 進入</b>細胞。</li><li>胞內滲透壓上升、水勢下降 → 水滲透流入，細胞吸水膨脹，<b>膨壓增加</b> → 氣孔打開。</li><li>光合作用進行時，細胞內 CO₂ 濃度下降，氣孔也會打開。</li></ul></div><div class=\"ex\"><h4>為什麼吸水後會「彎」成開口</h4><p>細胞壁上的纖維素<b>微纖絲橫向平行排列</b>，細胞吸水只能向縱向擴大；又因細胞壁<b>不均勻增厚</b>，外側壁較薄、易延長，使保衛細胞彎曲，氣孔張開。</p></div><div class=\"ex\"><h4>關閉</h4><p>受到某些<b>植物激素</b>刺激 → <b>K⁺ 離開</b>保衛細胞 → 滲透壓下降、水勢上升 → 水滲透離開 → <b>膨壓下降</b> → 氣孔關閉。</p></div>", "l7": "<div class=\"ex g\"><h4>影響蒸散的環境因素</h4><p>光照、氣溫、溼度、風、葉內 CO₂ 含量等環境因素，以及植物的構造，都會影響蒸散。環境因素通常<b>共同影響氣孔開閉</b>，再影響蒸散量。</p></div><div class=\"ex\"><h4>環境因素逐一看</h4><ul><li><b>藍光</b>：促進氣孔打開；又促使葉肉行光合作用，降低葉內 CO₂，讓氣孔維持開啟，蒸散量增加。</li><li><b>氣溫</b>：過高時蒸散可降低葉面溫度；但植株缺水時，即使溫度升高，氣孔仍會關閉，蒸散量反而下降。</li><li><b>風</b>：空氣流動愈快，蒸散愈快；但空氣溼度過低會使氣孔關閉，蒸散減緩。</li></ul></div><div class=\"ex\"><h4>植物本身的構造</h4><p><b>葉面積大小、角質層厚薄、葉面是否有毛茸、氣孔的分布位置與數量</b>，都會影響蒸散作用。</p></div>", "l8": "<div class=\"ex g\"><h4>絲瓜水從哪裡來</h4><p>民間用絲瓜水解毒、清熱，因含醣類、維生素及黏液，也用來保養肌膚。它主要是<b>絲瓜藤中運輸的水分</b>。</p></div><div class=\"ex\"><h4>製作流程</h4><ul><li>選<b>沒有結瓜的粗藤</b>（傍晚處理較佳）。</li><li>自地面上方處剪斷。</li><li>把剪斷的蔓藤一端插入乾淨瓶子收集汁液，包住瓶口防異物。</li><li>靜置 3～7 天，過濾雜質，即成絲瓜水。</li></ul></div><div class=\"ex\"><h4>想想看</h4><p>切斷後，是遠根端（A）還是近根端（B）收到較多絲瓜水？可以用本節的動力想：根壓把水推上來，近根端的切口通常能持續流出；遠根端連著的葉片，若水勢拉力已消失就少有水。請以根壓與蒸散作用的方向思考。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'根壓（圖 3-3）',src:'課本 P74 圖 3-3｜PPT 第 2–3 頁',fig:[B('f3','圖 3-3 根壓使黃豆幼苗的切口流出汁液')],layout:'single',slides:2,
   pts:['木質部中的水分向上運輸，動力來自<b>根壓、毛細作用與蒸散作用</b>。','將植物由莖基部切斷，一段時間後切口會流出汁液。','根的中柱內滲透壓較高、水勢較低，水不斷從土壤滲入中柱，產生向上推擠的力量——<b>根壓</b>。','根壓是根推動水分的基本動力。'],
@@ -503,7 +513,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -513,13 +523,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

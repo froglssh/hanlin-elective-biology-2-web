@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'植物類型',T2:'特化構造',T3:'觀察方法',T4:'討論題'
 const TAGL={T1:'l1',T2:'l3',T3:'l4',T4:'l6'};
 const GROUPS={g1:'原理與分類',g2:'步驟與觀察',g3:'討論'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>活動目的</h4><p>把薄壁、厚角、厚壁細胞的概念，用到<b>多樣化的營養構造</b>上，看植物的特化構造如何幫助它適應環境。這個活動以常見的中生植物為基準，比較旱生與水生植物。</p></div><div class=\"ex\"><h4>三類植物的分法</h4><ul><li>依生長環境中的<b>水分供給量</b>分成旱生、中生、水生植物。</li><li><b>旱生植物</b>：長期缺水的環境，如蘆薈、石蓮。</li></ul></div><div class=\"ex\"><h4>先建立的觀念</h4><p>環境不同，植物面對的最大困難也不同：旱生植物缺水，水生植物缺空氣（氧氣）。構造的特化，就是在解決這些問題。</p></div>", "l2": "<div class=\"ex g\"><h4>另外兩類植物</h4><p><b>中生植物</b>與<b>水生植物</b>。</p></div><div class=\"ex\"><h4>中生與水生</h4><ul><li><b>中生植物</b>：水分供給適中，如百合、向日葵等多數常見植物，是比較的基準。</li><li><b>水生植物</b>：長期浸在水中，如睡蓮與水蘊草。</li></ul></div><div class=\"ex\"><h4>兩種水生植物不一樣</h4><p>睡蓮的莖、葉<b>浮在水面</b>（浮葉植物）；水蘊草<b>整株沉浸在水中</b>（沉水植物）。位置不同，面對的環境也不同，所以構造的適應也不相同。</p></div>", "l3": "<div class=\"ex g\"><h4>營養器官的特化構造</h4><p>植物的根、莖、葉可能有不同形態，利於適應不同水分環境。</p></div><div class=\"ex\"><h4>三個典型</h4><ul><li><b>多肉植物</b>（旱生）：根、莖或葉呈<b>肉質</b>，利於儲存水分。</li><li><b>睡蓮</b>（浮葉）：莖或葉中常有<b>較大的空腔</b>，利於交換與疏通氣體。</li><li><b>水蘊草</b>（沉水）：莖、葉構造不發達，尤其是<b>維管束組織系統</b>退化。</li></ul></div><div class=\"ex\"><h4>為什麼水蘊草的維管束退化</h4><p>整株泡在水中，可以直接從水吸收水分與無機鹽，不需要複雜的輸導系統，所以維管束不發達。</p></div>", "l4": "<div class=\"ex g\"><h4>實驗做法</h4><p>觀察旱生、中生、水生植物的<b>莖和葉</b>，比較外形與內部構造。</p></div><div class=\"ex\"><h4>步驟</h4><ul><li><b>步驟 1</b>：觀察三類植物莖、葉的外形結構與特徵，並列表比較。</li><li><b>步驟 2</b>：用刀片或修枝剪切下適當的莖、葉片段，以放大鏡觀察是否有許多堅硬的<b>厚壁細胞</b>，或多為柔軟、肉質的<b>薄壁細胞</b>。必要時製成水埋玻片（方法見探討活動 2-1）。</li></ul></div><div class=\"ex\"><h4>小提醒</h4><p>有些構造可能出現<b>維管束退化</b>，遇到困難時先討論，再查資料求證。使用刀片與修枝剪時要注意安全。</p></div>", "l5": "<div class=\"ex g\"><h4>三種葉橫切面並排比較</h4><p>圖由上而下依序是：蘆薈（旱生）、百合（中生）、睡蓮（水生）。</p></div><div class=\"ex\"><h4>讀圖重點</h4><ul><li>三張圖的比例尺都是 <b>150 μm</b>，所以可以直接比較細胞大小與空腔。</li><li><b>蘆薈</b>：葉肉由<b>大型薄壁細胞</b>組成，利於儲水。</li><li><b>睡蓮</b>：組織中有<b>較大的空腔</b>，利於氣體交換與疏通。</li><li><b>百合</b>：作為中生植物的基準，看起來沒有明顯偏向儲水或空腔。</li></ul></div>", "l6": "<div class=\"ex g\"><h4>討論：構造如何有利於適應</h4><p>請依照外部形態與內部構造的觀察結果，說明哪些構造對該植物有利，以及可能的理由。</p></div><div class=\"ex\"><h4>思考方向</h4><ul><li>旱生與水生植物的生長<b>限制因子</b>分別是<b>水</b>與<b>空氣</b>。</li><li>因此構造的特化，都與<b>水或空氣的保存、取得</b>有關。</li><li>例：旱生植物重視「儲水、減少散失」；水生植物重視「取得與疏通氣體」。</li></ul></div><div class=\"ex\"><h4>回答的寫法</h4><p>建議用「觀察到的構造 → 它的功能 → 對應的環境問題」三段式回答，例如：「蘆薈葉肉為大型薄壁細胞 → 儲水 → 適應長期缺水」。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'旱生植物：長期缺水的環境',src:'課本 P62｜PPT 第 1–3 頁',fig:[B('p62','旱生植物：蘆薈、石蓮')],layout:'single',slides:1,
   pts:['<b>前言</b>：把薄壁、厚角、厚壁細胞的概念，應用在觀察多樣化的營養構造。','<b>目的</b>：以常見<b>中生植物</b>為基礎，比較<b>旱生</b>與<b>水生</b>植物的特化構造，探討可能的適應功能。','植物依生長環境水分供給量分為<b>旱生、中生、水生</b>三類。','<b>旱生植物</b>生長在長期缺水的環境，如<b>蘆薈、石蓮</b>。'],
@@ -477,7 +487,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -487,13 +497,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'供應與需求部位',T2:'蚜蟲實驗',T3:'壓力流模型',T4
 const TAGL={T1:'l2',T2:'l3',T3:'l4',T4:'l5'};
 const GROUPS={g1:'3-4.1 韌皮部的運輸',g2:'3-4.2 運輸的機制'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>糖要送到哪裡去</h4><p>植物行光合作用產生的醣類，以及其他代謝產生的有機養分，大部分都經由維管束的<b>韌皮部</b>運輸到各部位。</p></div><div class=\"ex\"><h4>這一節的重點</h4><ul><li>主要通道是<b>篩管</b>，伴細胞協助物質進出篩管。</li><li>篩管運輸的醣類主要是<b>蔗糖</b>。</li><li>運輸方向由「供應」和「需求」決定，機制是下面幾張要講的壓力流。</li></ul></div><div class=\"ex\"><h4>和木質部比較</h4><p>木質部是水與無機鹽<b>單向向上</b>運輸；韌皮部則可以<b>向上或向下</b>，這是兩者很重要的差別。</p></div>", "l2": "<div class=\"ex g\"><h4>誰供應、誰需求</h4><p>有機養分在韌皮部運輸的方向，取決於植物各構造在<b>不同生長期</b>對養分的供應與需求（圖 3－12）。</p></div><div class=\"ex\"><h4>兩種部位</h4><ul><li><b>供應部位</b>：成熟葉片、儲藏根、塊莖、種子的子葉及胚乳，可提供養分給植株。</li><li><b>需求部位</b>：生長中的嫩葉、花、種子及果實，以及發育中具儲存功能的根、莖。</li></ul></div><div class=\"ex\"><h4>重要概念：供與需是相對的</h4><p>同一個構造在不同生長期會<b>轉換角色</b>。例如種子萌發的幼苗期，子葉是供應部位，把養分往上、往下送給嫩芽與根；成熟植株時，成熟葉成為供應部位。所以韌皮部才會出現雙向運輸。</p></div>", "l3": "<div class=\"ex g\"><h4>怎麼證明韌皮部運糖</h4><p>早期雖然推論韌皮部可運輸有機養分，但直到 <b>1970 年代</b>才藉蚜蟲的吸食行為獲得確認（圖 3－13）。</p></div><div class=\"ex\"><h4>蚜蟲提供的證據</h4><ul><li>蚜蟲把口器插入嫩莖的<b>韌皮部</b>，吸食流出的物質；肛門處會有一滴溢出液。</li><li>即使<b>切斷蚜蟲的口器</b>，植物汁液仍會從殘留的口器持續流出。</li></ul></div><div class=\"ex\"><h4>這代表什麼</h4><p>切斷口器後汁液還會流，說明篩管內的汁液<b>帶有壓力</b>。科學家再比較根、莖、葉各部位韌皮部汁液的組成變化，逐步了解有機養分如何運輸。</p></div>", "l4": "<div class=\"ex g\"><h4>韌皮部的運輸機制（壓力流）</h4><p>以光合作用產生的有機養分為例：<b>葉是供應部位，莖與根是需求部位</b>（圖 3－14）。</p></div><div class=\"ex\"><h4>供應端（葉）</h4><ul><li>① 韌皮部<b>伴細胞</b>把葉肉細胞的蔗糖，藉<b>主動運輸</b>或經原生質絲的共質體路徑送進篩管細胞，篩管內<b>蔗糖濃度增加</b>。</li><li>② 水從鄰近的<b>木質部滲透</b>進入篩管，篩管內<b>壓力增加</b>。</li></ul></div><div class=\"ex\"><h4>需求端（莖、根）</h4><ul><li>③ 蔗糖被運到需求細胞，供新陳代謝或合成澱粉儲存，篩管內<b>蔗糖濃度降低</b>。</li><li>④ 水從篩管釋出（流回木質部），篩管內<b>壓力下降</b>。</li></ul></div><div class=\"ex\"><h4>結論</h4><p>篩管內的蔗糖，就隨著水由<b>壓力大的供應部位</b>流向<b>壓力小的需求部位</b>。</p></div>", "l5": "<div class=\"ex g\"><h4>整個過程要用能量嗎</h4><p>以上步驟不斷重複，蔗糖與其他有機養分就能源源不斷地從葉等供應部位運到莖或根等需求部位。</p></div><div class=\"ex\"><h4>耗能與不耗能的步驟</h4><ul><li><b>要耗能</b>：在供應部位與需求部位，把有機養分<b>送進或送出篩管</b>，必須靠主動運輸。</li><li><b>不耗能</b>：水在篩管進出（滲透作用），以及蔗糖溶液在篩管內因壓力差而流動。</li></ul></div><div class=\"ex\"><h4>和水的運輸比較</h4><p>木質部運水主要靠蒸散的拉力；韌皮部運糖則靠供應端與需求端的<b>壓力差</b>，只有在兩端的進出需要耗能。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'有機養分經韌皮部運輸',src:'課本 P89｜PPT 第 1 頁',fig:[B('s01_03','原 PPT 第 1 頁：韌皮部運輸')],layout:'single',slides:1,
   pts:['光合作用產生的醣類及其他代謝產生的有機養分，大部分經維管束的<b>韌皮部</b>運輸到各部位。','韌皮部的主要通道是<b>篩管</b>，<b>伴細胞</b>協助物質進出篩管。','篩管運輸的醣類主要是<b>蔗糖</b>（雙醣）。'],
@@ -482,7 +492,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -492,13 +502,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

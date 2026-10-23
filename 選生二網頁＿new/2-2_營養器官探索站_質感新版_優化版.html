@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'根的構造',T2:'特化根與不定根',T3:'莖的外形與特�
 const TAGL={T1:'l2',T2:'l5',T3:'l8',T4:'l10',T5:'l11',T6:'l14',T7:'l15',T8:'l3'};
 const GROUPS={g1:'2-2.1 根',g2:'2-2.2 莖',g3:'2-2.3 葉'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>三種營養器官</h4><p>維管束植物的根、莖、葉合稱<b>營養器官</b>（花、果實、種子則是生殖器官）。三者各有分工。</p></div><div class=\"ex\"><h4>分工一覽</h4><ul><li><b>根</b>：固定與支持植物體、從土壤吸收水與無機鹽、儲存水與養分。</li><li><b>莖</b>：運輸水分與養分、支持植物體；綠色的莖還能行光合作用。</li><li><b>葉</b>：行光合作用，合成養分。</li></ul></div><div class=\"ex\"><h4>本節架構</h4><p>後面依序介紹根（縱切面、橫切面、特化）、莖（外形、特化、內部構造、次級生長）、葉（外部、內部、特化）。</p></div>", "l2": "<div class=\"ex g\"><h4>根尖縱切面：由前到後四區</h4><p>大多數植物的根，由頂端往上依序可分為<b>根冠、分生區、延長區、成熟區</b>（圖 2－9a）。</p></div><div class=\"ex\"><h4>四區各做什麼</h4><ul><li><b>根冠</b>（根帽）：位於最先端，保護分生區穿過土壤時免於受損。</li><li><b>分生區</b>：細胞行有絲分裂，形成頂端分生組織；新細胞向前補充脫落的根冠細胞，向後特化成延長區細胞。</li><li><b>延長區</b>：細胞不再分裂，液泡吸水使體積增加，這就是<b>根延長的原因</b>。</li><li><b>成熟區</b>：細胞完全分化，表皮細胞向外凸出形成<b>根毛</b>，是吸收水與無機鹽的主要區域。</li></ul></div><div class=\"ex\"><h4>記憶線索</h4><p>根的長長靠兩步：分生區「增加細胞數量」，延長區「讓細胞變大」。</p></div>", "l3": "<div class=\"ex g\"><h4>成熟區橫切面：由外而內</h4><p>成熟區的橫切面由外而內分成<b>表皮、皮層、中柱</b>三部分，彼此分工合作（圖 2－9b、2－10）。</p></div><div class=\"ex\"><h4>三個部分</h4><ul><li><b>表皮</b>：最外層，保護與吸收，有些細胞形成根毛。</li><li><b>皮層</b>：大部分是薄壁細胞，儲存養分；最內側是<b>內皮</b>，細胞壁有含木質素或木栓質的帶狀結構<b>卡氏帶</b>，管制水與溶質進入中柱。</li><li><b>中柱</b>（內皮以內）：最外層是<b>周鞘</b>，細胞可分裂，支根由此產生；內側有木質部與韌皮部。</li></ul></div><div class=\"ex\"><h4>雙子葉與單子葉的比較（圖 2－10）</h4><ul><li><b>雙子葉</b>（毛茛）：木質部與韌皮部呈<b>輻射鑲嵌狀</b>排列，較少有髓。</li><li><b>單子葉</b>（玉米）：木質部與韌皮部呈<b>環狀相間</b>排列，中柱中央多有薄壁細胞組成的髓。</li></ul></div><div class=\"ex\"><h4>腦力激盪提示</h4><p>支根由周鞘長出，是整條新的根，有自己的組織；根毛只是單一表皮細胞的凸出。可從細胞組成與功能比較兩者。</p></div>", "l4": "<div class=\"ex g\"><h4>支根怎麼長出來</h4><p>成熟的根多會長出支根。<b>雙子葉與單子葉植物</b>的根都可長出支根，方式也相同。</p></div><div class=\"ex\"><h4>三個步驟</h4><ul><li>① 根中的<b>周鞘細胞</b>密集分裂，形成支根的頂端分生組織。</li><li>② 支根的頂端分生組織繼續增生新的組織。</li><li>③ 逐漸伸長的支根<b>推擠</b>成熟根的皮層，向外突出生長。</li></ul></div><div class=\"ex\"><h4>順便認識根系型態</h4><ul><li><b>軸根系</b>：有主根與支根之分，多為雙子葉植物。</li><li><b>鬚根系</b>：沒有明顯主根，多為單子葉植物。</li></ul></div>", "l5": "<div class=\"ex g\"><h4>除了典型的軸根與鬚根</h4><p>許多植物演化出不同形態與功能的<b>特化根</b>，有利於適應不同的生活環境（圖 2－11）。</p></div><div class=\"ex\"><h4>四個例子</h4><ul><li><b>支持根</b>：玉米莖接近地面處的節長出，支撐植株。</li><li><b>呼吸根</b>：河口沼澤紅樹林植物<b>海茄苳</b>伸出地面，利於吸收空氣。</li><li><b>氣生根</b>：附在樹幹或石壁上生長的<b>蘭花</b>。</li><li><b>儲藏根</b>：<b>胡蘿蔔</b>，儲存養分。</li></ul></div><div class=\"ex\"><h4>讀這一頁的方法</h4><p>每個例子都是「環境問題 → 根的形態改變」：不穩的土壤需要支持、泥濘缺氧需要呼吸、附生需要攀附、儲存養分需要膨大。</p></div>", "l6": "<div class=\"ex g\"><h4>什麼是不定根</h4><p>典型的根由種子萌發的<b>初生根</b>發育而來。但有些特化根<b>直接從莖或葉產生</b>，不是源自根部組織，稱為<b>不定根</b>。不定根構造與功能和一般根相似，例如玉米的支持根與蘭花的氣生根。</p></div><div class=\"ex\"><h4>名稱會隨生長改變（榕樹）</h4><p>榕樹莖上懸垂在空中的鬚根是<b>氣生根</b>，可直接吸收空氣中的氧與水分；持續生長接觸地面、伸入土中後加粗，像許多小「樹幹」，此時改稱<b>支持根</b>，兼具吸水與支持功能。</p></div><div class=\"ex\"><h4>根的側生分生組織來自哪裡</h4><ul><li>在木本雙子葉植物負責支持的成熟根中，<b>周鞘細胞</b>可特化成<b>木栓形成層</b>，向外產生木栓層取代表皮。</li><li><b>維管束形成層</b>由木質部與韌皮部之間的薄壁細胞特化而來。</li><li>和木本莖相同，根也靠增生組織堆疊而成<b>木質根</b>。</li></ul></div>", "l7": "<div class=\"ex g\"><h4>莖的外部形態</h4><p>植物體地上部分主要是直立、可分支的莖，負責支持、運輸及光合作用。莖外形多為直立長條狀（圖 2－12）。</p></div><div class=\"ex\"><h4>基本名詞</h4><ul><li>莖上有<b>節</b>，節和節之間稱<b>節間</b>；節的位置能長出葉或花。</li><li><b>芽</b>是未發育的枝條：莖頂的是<b>頂芽</b>，節上的是<b>側芽</b>（腋芽）。</li></ul></div><div class=\"ex\"><h4>草本與木本（圖 2－13）</h4><ul><li><b>草本植物</b>：草質莖柔軟，高度與粗細受限。</li><li><b>木本植物</b>：木質莖堅硬、支持力強，可持續加粗長高；依高度、分枝及攀爬性分成<b>喬木</b>（楓香）、<b>灌木</b>（鵝掌藤）、<b>木質藤本</b>（血藤）。</li></ul></div>", "l8": "<div class=\"ex g\"><h4>特化莖四例（圖 2－14）</h4><p>有些植物的莖演變成具特殊功能的形式。</p></div><div class=\"ex\"><h4>例子</h4><ul><li><b>塊莖</b>：馬鈴薯，位於土壤中，儲存養分。</li><li><b>走莖</b>：草莓，橫於地表，延伸長出新植株。</li><li><b>根莖</b>：薑，橫走於土壤中。</li><li><b>刺狀莖</b>：柑橘植物，具保護作用。</li></ul></div><div class=\"ex\"><h4>為什麼馬鈴薯是塊莖不是根？</h4><ul><li>生長過程：主莖基部長出橫走的莖伸入土中 → 近頂芽處膨大 → 持續儲存養分膨大成塊狀。</li><li>判斷依據：它<b>有節，節上有葉（痕跡）與芽</b>，這是根沒有的特性；馬鈴薯的<b>芽眼</b>就是節上的芽。</li></ul></div><div class=\"ex\"><h4>腦力激盪提示</h4><p>思考上述四種特化莖各自的功能（儲存、繁殖、保護），並試著舉出其他例子。</p></div>", "l9": "<div class=\"ex g\"><h4>草本雙子葉的莖（向日葵）</h4><p>構造由外而內為<b>表皮、皮層、維管束、髓</b>（圖 2－15a）。</p></div><div class=\"ex\"><h4>讀圖重點</h4><ul><li>表皮由排列緊密的單層細胞構成，常有氣孔。</li><li>皮層與髓主要是排列疏鬆的薄壁細胞；<b>靠近表皮的皮層細胞含較多葉綠體</b>，是綠色莖行光合作用的位置。</li><li>維管束呈<b>環狀排列</b>，由韌皮部、維管束形成層、木質部組成。</li><li>草本雙子葉的形成層受生長與壽命限制，產生的維管束組織有限，所以莖直徑增加<b>不明顯</b>。</li></ul></div><div class=\"ex\"><h4>單子葉的莖（玉米，圖 2－15b）</h4><ul><li>構造包括表皮、基本組織、維管束。</li><li>維管束<b>散布</b>在基本組織中，靠近表皮處較密集、較小。</li><li>木質部與韌皮部之間<b>沒有維管束形成層</b>。</li></ul></div>", "l10": "<div class=\"ex g\"><h4>木本莖增粗後，表皮怎麼辦</h4><p>木本雙子葉的莖成熟後，表皮細胞通常不再增大或增生，但內部組織體積持續增加，最後<b>表皮破裂</b>。這時需要新的保護層來接手。</p></div><div class=\"ex\"><h4>周皮的誕生（圖 2－16）</h4><ul><li>表皮內側的皮層細胞特化成<b>木栓形成層</b>。</li><li>向外產生多層緊密的<b>木栓層</b>；向內產生少量活的薄壁細胞，構成<b>栓皮層</b>。</li><li>木栓層、木栓形成層、栓皮層合稱<b>周皮</b>，取代表皮的保護功能。</li></ul></div><div class=\"ex\"><h4>木栓層的特性與皮孔（圖 2－17）</h4><ul><li>木栓細胞壁含<b>木栓質</b>，木栓層不透水也不透氣，可防止物質進入與水分散失。</li><li>成長過程中，木栓層外層常形成破裂缺口，稱<b>皮孔</b>，植物體藉皮孔進行氣體交換。</li><li>栓皮層的功能與皮層相似。</li></ul></div>", "l11": "<div class=\"ex g\"><h4>什麼是樹皮</h4><p>木本雙子葉植物莖的<b>維管束形成層</b>細胞較軟、厚度較薄，外圍的組織容易從此剝離，這些剝離的部分稱為<b>樹皮</b>。</p></div><div class=\"ex\"><h4>樹皮與木材</h4><ul><li>樹皮由內而外包括：<b>韌皮部、皮層、周皮、表皮</b>。</li><li>維管束形成層往內增生<b>次生木質部</b>，堅硬的木質部累積形成<b>木材</b>，使莖長成粗壯的木質莖。</li></ul></div><div class=\"ex\"><h4>讀圖 2－18</h4><p>圖中 ① ～ ④ 依序是第一年生長季節前期、第一年末期、第二年前期、第二年末期產生的木質部細胞，可看到木質部一圈一圈往外增加。</p></div>", "l12": "<div class=\"ex g\"><h4>年輪怎麼形成</h4><p>生長季節分明的樹種，木質部細胞會因生長速度差異，形成<b>顏色深淺交替</b>的木材，稱為<b>年輪</b>（圖 2－19）。</p></div><div class=\"ex\"><h4>春材與秋材</h4><ul><li><b>春材</b>（早材）：春季形成，細胞<b>大</b>、色澤<b>淺</b>。</li><li><b>秋材</b>（晚材）：夏末秋初形成，細胞<b>小</b>、色澤<b>深</b>。</li></ul></div><div class=\"ex\"><h4>心材與邊材</h4><ul><li><b>心材</b>：木材中央顏色較深，因老化而失去運輸功能，主要作為<b>支持</b>。</li><li><b>邊材</b>：外圍顏色較淺、較年輕，是<b>運輸水分</b>的主要部位。</li></ul></div><div class=\"ex\"><h4>腦力激盪提示</h4><p>莖有年輪，根是否也有？想想根中是否有分明的生長季節與維管束形成層的活動。</p></div>", "l13": "<div class=\"ex g\"><h4>葉的外部構造</h4><p>葉是莖上行光合作用的主要器官，壽命通常有限，會從頂芽或側芽長出新葉替換枯黃的老葉。維管束植物的葉多為扁平狀（圖 2－20）。</p></div><div class=\"ex\"><h4>雙子葉與單子葉</h4><ul><li><b>雙子葉</b>：葉片（光合作用的主要部位）、葉柄（連接莖、支撐葉片）、<b>托葉</b>（在葉柄基部，保護芽）。</li><li><b>單子葉</b>：葉片與<b>葉鞘</b>，不具托葉；葉鞘呈鞘狀包在莖上，連接並支持葉片。</li></ul></div>", "l14": "<div class=\"ex g\"><h4>葉橫切面：表皮、葉肉、維管束</h4><p>葉片由外而內包括<b>表皮、葉肉、維管束</b>（圖 2－21）。</p></div><div class=\"ex\"><h4>表皮</h4><ul><li>通常只有一層細胞，由表皮細胞與保衛細胞構成。</li><li>多有<b>角質層</b>覆蓋，減少水分散失、保護葉肉。</li><li>成對的保衛細胞與其間孔洞合稱<b>氣孔</b>，是氣體進出、水分蒸散的門戶。</li></ul></div><div class=\"ex\"><h4>葉肉與葉脈</h4><ul><li>葉肉位於上、下表皮之間，由具葉綠體的薄壁細胞構成，是光合作用的主要場所。</li><li>多數雙子葉（茶樹）分兩型：靠近上表皮的<b>柵狀葉肉</b>，細胞長條形、排列整齊；靠近下表皮的<b>海綿葉肉</b>，形狀不一、有許多空隙。大部分單子葉葉肉較無此差異。</li><li>氣孔附近葉肉圍出<b>氣室</b>，是氣體暫存與交換的空間。</li><li>維管束（葉脈）：<b>木質部近上表皮、韌皮部近下表皮</b>；雙子葉多為網狀脈，單子葉多為平行脈。</li></ul></div>", "l15": "<div class=\"ex g\"><h4>特化葉四例（圖 2－22）</h4><p>有些葉在形態或構造上不同於一般葉，具特殊功能，使植物適應特殊環境。</p></div><div class=\"ex\"><h4>例子</h4><ul><li><b>仙人掌的刺</b>：減少水分散失並保護。</li><li><b>九重葛的苞葉</b>：花下方顏色鮮豔。</li><li><b>豌豆的捲鬚葉</b>：攀附。</li><li><b>捕蠅草的捕蟲葉</b>：捕捉昆蟲。</li></ul></div><div class=\"ex\"><h4>知識補給站：苞片、萼片、花瓣都是特化葉</h4><p>聖誕紅、九重葛的鮮豔苞葉，以及枝條頂芽與花芽外的鱗片狀構造（紅楠、銀柳）統稱<b>苞片</b>，形態多樣，但都是葉的特化，具<b>保護</b>功能。花的萼片與花瓣也是特化葉，具保護作用或吸引傳粉媒介。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'營養器官：根、莖、葉',src:'課本 P42｜PPT 第 1–2 頁',fig:[B('s02_03','原 PPT 第 2 頁：營養器官的功能')],layout:'single',slides:2,
   pts:['<b>根</b>：固定與支持植物體，從土壤吸收水與無機鹽，並儲存水與養分。','<b>莖</b>：運輸水分和養分、支持植物體，綠色莖可行光合作用。','<b>葉</b>：行光合作用合成養分。','根、莖、葉合稱植物的<b>營養器官</b>（花、果實、種子則是生殖器官）。'],
@@ -533,7 +543,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -543,13 +553,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

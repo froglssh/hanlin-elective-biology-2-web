@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'種子的構造',T2:'四種種子的比較',T3:'萌發三階段'
 const TAGL={T1:'l1',T2:'l2',T3:'l4',T4:'l5'};
 const GROUPS={g1:'4-3.1 種子的構造',g2:'4-3.2 種子萌發成幼苗'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>種子：子代的暫存形式</h4><p>植物藉有性生殖產生子代，<b>種子是子代在胚胎階段的暫存形式</b>。種子可進入休眠，等待適宜條件再萌發。種子的構造能保護胚胎，也能在萌發時提供幼苗養分。</p></div><div class=\"ex\"><h4>種子的三個組成與來源</h4><ul><li><b>種皮</b>（2n）：由<b>珠被</b>發育而成，保護內部的胚。</li><li><b>胚</b>（2n）：由<b>受精卵</b>發育而成，是幼小的植物體，包括<b>胚芽、胚軸、胚根、子葉</b>。</li><li><b>胚乳</b>（3n）：由<b>胚乳母細胞</b>發育而成，<b>貯藏養分</b>，提供胚發育與種子萌發。</li></ul></div><div class=\"ex\"><h4>回顧連結</h4><p>這三個部分的染色體倍數（2n、2n、3n），正是 4-2 的雙重受精帶來的結果。</p></div>", "l2": "<div class=\"ex g\"><h4>四種種子，看誰有胚乳、有幾片子葉</h4><p>圖 4－12 比較兩種雙子葉與兩種單子葉的種子（套綠底色的是胚的組成）。</p></div><div class=\"ex\"><h4>雙子葉</h4><ul><li><b>蓖麻</b>：有<b>胚乳</b>，2 片子葉。</li><li><b>黃豆</b>：胚乳的養分在胚發育中後期被子葉吸收而消失，養分貯藏在<b>子葉</b>，萌發時完全由子葉供應養分。</li></ul></div><div class=\"ex\"><h4>單子葉</h4><ul><li><b>玉米</b>：種皮與果皮癒合，有<b>大量胚乳</b>，1 片子葉（盾狀，又稱子葉盤）。</li><li><b>洋蔥</b>：1 片彎曲的子葉，有胚乳。</li></ul></div><div class=\"ex\"><h4>一個容易錯的觀念</h4><p>「雙子葉＝無胚乳」是不對的，蓖麻就是有胚乳的雙子葉。要看的是胚乳有沒有被子葉吸收。</p></div>", "l3": "<div class=\"ex g\"><h4>子葉不只是養分倉庫</h4><p>種子萌發初期，有些長出地表的幼苗，其子葉會凋萎，例如<b>綠豆</b>（課本圖 a）。但有些植物幼苗的子葉能行<b>光合作用</b>。</p></div><div class=\"ex\"><h4>會行光合作用的子葉</h4><ul><li>子葉呈<b>濁綠色</b>，並持續增大表面積。</li><li>直到幼苗的<b>初生葉</b>完全長成熟後才枯萎脫落。</li><li>例：<b>蘿蔔、蓖麻</b>的幼苗（圖 b、c）。</li></ul></div><div class=\"ex\"><h4>比較</h4><p>子葉出土後的命運不同：有的只負責供應養分、很快凋萎，有的還能自己行光合作用，直到初生葉接手。</p></div>", "l4": "<div class=\"ex g\"><h4>萌發的三個階段</h4><p>不同植物種子萌發成幼苗的過程略有差異，但一般可歸納成：<b>胚根突出 → 胚軸延伸 → 胚芽生長</b>。</p></div><div class=\"ex\"><h4>第一階段：胚根突出</h4><ul><li>大部分種子萌發由<b>胚根突破種皮</b>開始，稱<b>初生根</b>，可吸收水與無機鹽，供其他部位生長。</li><li><b>雙子葉植物</b>：初生根長成<b>主根</b>，與支根構成<b>軸根系</b>（如豌豆）。</li><li><b>單子葉植物</b>：初生根一段時間後<b>逐漸萎縮</b>，由胚軸或莖基部長出<b>不定根</b>，與其支根構成<b>鬚根系</b>（如玉米）。</li></ul></div>", "l5": "<div class=\"ex g\"><h4>第二階段：胚軸延伸</h4><p>胚根突出後，胚軸快速延伸，但延伸的位置不同，決定了子葉會不會出土。</p></div><div class=\"ex\"><h4>上胚軸與下胚軸</h4><ul><li><b>上胚軸</b>：位於子葉<b>上方</b>的胚軸。</li><li><b>下胚軸</b>：位於子葉<b>下方</b>的胚軸。</li></ul></div><div class=\"ex\"><h4>兩種類型</h4><ul><li><b>上胚軸延伸為主</b>（豌豆、玉米）：地面上只見胚芽繼續生長，<b>子葉留在土裡</b>、不出土。</li><li><b>下胚軸延伸為主</b>（黃豆、洋蔥）：下胚軸把<b>子葉與胚芽一起推出地表</b>，子葉出土。</li></ul></div>", "l6": "<div class=\"ex g\"><h4>子葉不出土：豌豆與玉米（圖 4－13）</h4><p>兩者都是<b>上胚軸延伸</b>，子葉留在土中。</p></div><div class=\"ex\"><h4>兩者的差別</h4><ul><li><b>豌豆</b>：初生根發育成<b>主根</b>（軸根系）。</li><li><b>玉米</b>：初生根<b>逐漸萎縮</b>，由莖基部長出<b>不定根</b>（鬚根系）。</li></ul></div><div class=\"ex\"><h4>第三階段：胚芽生長</h4><p>胚芽突出地面後，長成地上的莖與葉。幼葉經陽光照射，葉肉細胞<b>生成葉綠體</b>，葉片轉為綠色並展開，開始接收光能行<b>光合作用</b>，製造養分，持續長出新枝葉。</p></div>", "l7": "<div class=\"ex g\"><h4>子葉出土：黃豆與洋蔥（圖 4－14）</h4><p>兩者都是<b>下胚軸延伸</b>，把子葉推出地面。</p></div><div class=\"ex\"><h4>兩者的過程</h4><ul><li><b>黃豆</b>：下胚軸延伸並<b>彎曲</b>，把子葉與幼葉推出地表後再伸直；初生根發育成主根與支根。</li><li><b>洋蔥</b>：下胚軸與延伸的子葉呈<b>弧形</b>，把種皮帶出地面；之後初生葉長出，子葉枯萎。</li></ul></div><div class=\"ex\"><h4>最後的結局</h4><p>種子萌發成幼苗後，子葉與胚乳會隨幼苗生長而逐漸<b>萎縮、脫落</b>，因為這時幼苗已能靠自己的葉片行光合作用。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'種子的組成與來源',src:'課本 P122｜PPT 第 2–3 頁',fig:[B('s02_03','原 PPT：胚珠雙重受精後發育成種子'),B('s03_03','原 PPT：各構造的來源與套數')],layout:'stack',slides:2,
   pts:['種子由<b>種皮、胚、胚乳</b>組成。','<b>種皮（2n）</b>：由珠被發育，保護種子。','<b>胚（2n）</b>：由受精卵發育，包括<b>胚芽、胚軸、胚根、子葉</b>，是幼小的植物體。','<b>胚乳（3n）</b>：由胚乳母細胞發育，貯藏養分。'],
@@ -493,7 +503,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -503,13 +513,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

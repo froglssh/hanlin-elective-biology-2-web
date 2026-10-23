@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'花的觀察',T2:'果實解剖',T3:'單花果與多花果',T4:'�
 const TAGL={T1:'l2',T2:'l4',T3:'l5',T4:'l7'};
 const GROUPS={g1:'活動一　花的觀察',g2:'活動二　果實的觀察',g3:'討論'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>活動目的</h4><p>許多植物靠開花結果的有性生殖，把下一代（果實中的種子）散播出去。豌豆等豆類的花凋謝後，如何發育成果實（豆莢）？花與果實的構造有什麼特色，利於有性生殖？這個活動就是用觀察來回答。</p></div><div class=\"ex\"><h4>兩個目的</h4><ul><li>觀察常見花的外形與構造，了解<b>花的基本組成</b>。</li><li>觀察果實構造，連結<b>由花長成果實</b>的過程，並認識種子的散播方式。</li></ul></div><div class=\"ex\"><h4>器材與季節</h4><p>放大鏡、尖細鑷子、解剖刀、解剖顯微鏡、深色壁報紙、水果刀、砧板。花與果實依季節選用（第 1、2 學期的建議材料不同，如向日葵、朱槿、百合、鳳梨、蘋果、草莓、桃等）。使用解剖刀與水果刀時要注意安全。</p></div>", "l2": "<div class=\"ex g\"><h4>活動一（上）：認識花的外形與對稱性</h4><p>先整體、再逐步拆解。</p></div><div class=\"ex\"><h4>步驟 1–3</h4><ul><li><b>步驟 1</b>：觀察一朵花的外形，分辨<b>花萼、花冠、雄蕊、雌蕊</b>。</li><li><b>步驟 2</b>：由構造排列方式判斷對稱性：<b>輻射對稱</b>的花可有多條對稱軸；<b>兩側對稱</b>的花只有一條對稱軸。</li><li><b>步驟 3</b>：用鑷子由外而內（花萼 → 花冠）依序從花托摘下。</li></ul></div><div class=\"ex\"><h4>小提醒</h4><p>留意各部分的相對著生位置，有些並未直接著生在花托上（例如花瓣可能著生在花萼筒上）。</p></div>", "l3": "<div class=\"ex g\"><h4>活動一（下）：解剖並排列</h4><p>把花拆開、攤平、排列，才能清楚看出各部分的數量。</p></div><div class=\"ex\"><h4>步驟 4–6</h4><ul><li><b>步驟 4</b>：若花萼或花冠<b>癒合</b>，須縱向劃開，並從基部切離，把花冠攤平。</li><li><b>步驟 5</b>：取下雄蕊，最後剩<b>雌蕊留在花托上</b>；在壁報紙上把各部分一一排列，標示植物名稱與各項構造，並拍照記錄。</li><li><b>步驟 6</b>：重複上述步驟，觀察並記錄多種花。</li></ul></div><div class=\"ex\"><h4>為什麼用深色壁報紙</h4><p>花瓣、雄蕊多為淺色或小構造，放在深色背景上對比明顯，拍照記錄時才容易看清楚。</p></div>", "l4": "<div class=\"ex g\"><h4>活動二：果實解剖的基本操作</h4><p>市售果實多半已經過品種選育，強化可食用的部分，但仍有一些殘餘痕跡，可以用來判斷果實由哪些構造組成。</p></div><div class=\"ex\"><h4>操作流程</h4><ul><li><b>判斷類型</b>：看外形與質地，是肉質多汁的<b>肉果</b>還是乾燥的<b>乾果</b>；乾果再判斷會不會自行裂開。</li><li><b>切開</b>：肉果從果柄往下做<b>縱切</b>，另一顆從直徑最大處做<b>橫切</b>（與通過果柄的軸垂直）。</li><li><b>比較縱、橫切面</b>：有無分隔、每個分隔的種子數目與著生方式，可用簡單手繪圖輔助。</li><li><b>觀察果皮層次</b>：例如桃的果皮有外、中、內果皮。</li><li><b>分辨花的範圍</b>：有些肉果包含子房以外的構造，要找出哪些部分不是子房。</li></ul></div>", "l5": "<div class=\"ex g\"><h4>單花果：蘋果與草莓</h4><p>這兩種果實看起來都是「一顆」，但肉質部分的來源不同。</p></div><div class=\"ex\"><h4>蘋果</h4><ul><li>外觀可找到<b>殘留的萼片或雄蕊</b>，證明它來自單一朵花。</li><li>縱切可見<b>子房壁與花萼筒癒合的界線</b>；橫切可見<b>分隔數（5 個）</b>與種子。</li><li>所以蘋果的肉質部分包含子房壁，還包含<b>子房以外的構造（花萼筒）</b>。</li></ul></div><div class=\"ex\"><h4>草莓</h4><ul><li>肉質部位由<b>花托</b>發育而成。</li><li>表面的小顆粒才是由<b>雌蕊</b>長成的小果實。</li></ul></div><div class=\"ex\"><h4>快速分辨的方法</h4><p>若手邊有蘋果與草莓的花，觀察雌蕊的位置與構造，就能區分兩種果實的差別。</p></div>", "l6": "<div class=\"ex g\"><h4>多花果：鳳梨</h4><p>鳳梨看似一顆果實，其實是由<b>許多花一起發育</b>而成，是典型的<b>多花果</b>。</p></div><div class=\"ex\"><h4>觀察重點</h4><ul><li>外觀的<b>六角形小單元</b>是一朵花的範圍，其上可見殘留的萼片，基部有<b>苞片</b>。</li><li>縱切可見中央的<b>花序軸</b>。</li><li>每個六角形對應<b>一朵花長成的果實</b>。</li></ul></div><div class=\"ex\"><h4>對照 4-2</h4><p>這正是 4-2 知識補給站說的：鳳梨由整個花序發育而成，每一朵花形成一個小果實。</p></div>", "l7": "<div class=\"ex g\"><h4>討論：花的組成與數目</h4><p>把你的觀察紀錄與通則比較。</p></div><div class=\"ex\"><h4>討論 1：花部數目的通則</h4><ul><li><b>單子葉</b>：萼片、花瓣多為 <b>3 的倍數</b>，雄蕊與雌蕊多為 3 或 6。</li><li><b>雙子葉</b>：多為 <b>4 或 5 的倍數</b>。</li><li>與通則不同的，多半是<b>特別選種培育</b>的結果。</li></ul></div><div class=\"ex\"><h4>討論 2：玫瑰同屬、花卻差很多</h4><p>原始的薔薇屬花瓣 5 枚、雄蕊很多。市售玫瑰多為<b>園藝培育</b>，人們篩選了重瓣的變異品種，所以同屬植物的花蕊差異很大。</p></div><div class=\"ex\"><h4>討論 3：授粉與授粉後的變化</h4><p>雌蕊的柱頭（黏附花粉）等構造有利於授粉。授粉後，花粉向胚珠延伸以利受精；<b>花瓣枯萎脫落，子房與參與果實發育的構造膨大，花柄加粗</b>。</p></div>", "l8": "<div class=\"ex g\"><h4>討論：果實上的花殘跡</h4><p>在觀察過的果實中，哪些還保留花的構造痕跡？</p></div><div class=\"ex\"><h4>常見的殘跡</h4><ul><li>番茄、番石榴、蘋果、梨、草莓等單花果：果實上多有<b>殘留的萼片或乾枯的雄蕊</b>。</li><li>多花果鳳梨：六角形範圍為一朵花；桑椹的小核果上可見<b>乾枯的花柱</b>。</li></ul></div><div class=\"ex\"><h4>由分隔數推花部數，一定成立嗎</h4><p>蘋果橫切面有 5 個分隔，蘋果花的萼片、花瓣也是 5 的倍數；但「由子房分隔數推花部數」<b>不一定成立</b>，要依植物類群而定。例如十字花科的萼片 4、花瓣 4，與子房的室數並不相同，所以要以實際觀察為準。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'前言、目的與器材',src:'課本 P126｜PPT 第 1–4 頁',fig:[B('s02_03','原 PPT：目的')],layout:'single',slides:1,
   pts:['<b>前言</b>：許多植物以開花結果的有性生殖把下一代（果實中的種子）散播出去。','豌豆等豆類的花凋謝後，如何發育成果實（豆莢）？花與果實的構造有什麼特色，利於有性生殖？','<b>目的</b>：(1) 觀察常見花的外形與構造，了解花的基本組成；(2) 觀察果實構造，連結由花長成果實的過程，並認識種子的散播方式。','器材：放大鏡、尖細鑷子、解剖刀、解剖顯微鏡、深色壁報紙、水果刀、砧板。'],
@@ -503,7 +513,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -513,13 +523,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');

@@ -237,6 +237,15 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
   .top,#bar,.noprint{display:none!important}
   body{background:#fff}
 }
+
+/* 課文講解分頁 */
+.pane .ex{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--accent);line-height:1.62}
+.pane .ex h4{margin:0 0 3px;font-size:.82em;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.pane .ex p{margin:0}
+.pane .ex ul{margin:2px 0 0;padding-left:1.15em}
+.pane .ex li{margin:0 0 3px}
+.pane .ex b{color:var(--ink)}
+.pane .ex.g{background:var(--soft);padding:8px 12px 8px 12px;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -282,7 +291,7 @@ dialog img{display:block;max-width:92vw;max-height:84vh;margin:auto;background:#
     <div class="lbody" id="lcard">
       <div class="lfig" id="l-fig"></div>
       <aside class="lside">
-        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button></div>
+        <div class="tabs" role="tablist"><button role="tab" id="tab0" aria-selected="true">教學重點</button><button role="tab" id="tab1" aria-selected="false">想一想・筆記</button><button role="tab" id="tab2" aria-selected="false">課文講解</button></div>
         <div class="pane" id="pane"></div>
       </aside>
     </div>
@@ -358,6 +367,7 @@ const TAGN={T1:'異營到自營',T2:'無氧到有氧',T3:'原核到真核',T4:'�
 const TAGL={T1:'l2',T2:'l3',T3:'l5',T4:'l7',T5:'l10',T6:'l1'};
 const GROUPS={g1:'營養與產能方式',g2:'由原核到真核',g3:'多細胞與統整'};
 const B=(k,cap)=>({k,cap});
+const EXPL={"l1": "<div class=\"ex g\"><h4>先看全局</h4><p>從第一個細胞到現今種類繁多的物種，每一種生物都是「生命形式多樣化」歷史的一部分。第一個細胞怎麼形成、如何獲得能量、如何形成遺傳密碼，多半仍是未解之謎，但<b>化石資料</b>已揭露一些重要事實。</p></div><div class=\"ex\"><h4>本節的四條主線</h4><ul><li>營養方式：<b>異營 → 自營</b></li><li>產能方式：<b>無氧 → 有氧</b></li><li>細胞構造：<b>原核 → 真核</b></li><li>細胞數目：<b>單細胞 → 多細胞</b></li></ul></div><div class=\"ex\"><h4>學習方法</h4><p>四條主線各自有一個「環境改變 → 生物適應」的因果故事，讀的時候記得抓住「為什麼要演化」，而不只是背結果。</p></div>", "l2": "<div class=\"ex g\"><h4>1-3.1　由異營到自營</h4><p>初始的大氣層厚度只有現今的一半，<b>沒有氧氣，也沒有臭氧層</b>，紫外線輻射直接到達地表。環境中累積了許多化學演化產生的有機物。</p></div><div class=\"ex\"><h4>故事怎麼發展</h4><ul><li>早期生物直接攝取環境中自然形成的有機物並獲得能量，這種代謝方式稱為<b>異營</b>。</li><li>後來有機物合成速率減緩，更多生物又加速消耗，生物愈來愈難直接取得有機物。</li><li>於是演化出能<b>自行由無機物合成有機物</b>的生物，稱為<b>自營</b>。</li></ul></div><div class=\"ex\"><h4>影響</h4><p>自營生物讓有機物有了<b>穩定的來源</b>，生物的代謝方式更多元，也促進了地球上生物的多樣化。</p></div>", "l3": "<div class=\"ex g\"><h4>1-3.2　由無氧到有氧（上）</h4><p>早期大氣沒有氧氣，最初的生物應該是以<b>無氧的方式</b>分解有機物取得能量。<b>糖解作用</b>被認為是最早出現在細胞中的代謝途徑之一。</p></div><div class=\"ex\"><h4>氧氣從哪裡來</h4><ul><li>約 <b>35 億年前</b>，出現能進行<b>產氧光合作用</b>的生物。</li><li>圖 1－13：澳洲西部的<b>疊層石</b>中，發現生存於 35 億年前、類似藍綠菌的化石。</li><li>疊層石是海底沉澱物堆積成的層狀構造，是研究早期生命的重要證據。</li></ul></div><div class=\"ex\"><h4>小提醒</h4><p>先記得順序：先有無氧的產能方式，後來才有產氧光合作用，氧氣是生物自己製造出來的。</p></div>", "l4": "<div class=\"ex g\"><h4>1-3.2　由無氧到有氧（下）</h4><p>光合作用持續釋放氧氣，到了距今約 <b>20 億年前</b>，氧氣終於能在大氣中累積，對當時許多<b>厭氧生物</b>造成傷害，稱為「<b>氧氣大災難</b>」。</p></div><div class=\"ex\"><h4>倖存者怎麼適應</h4><ul><li>有的厭氧生物只能躲在<b>無法累積氧氣的角落</b>生活。</li><li>有的發展出<b>忍受氧氣傷害</b>的機制。</li><li>後來更演化出能利用氧氣行<b>有氧呼吸</b>的好氧性生物。</li></ul></div><div class=\"ex\"><h4>為什麼有氧成為主流</h4><p>有氧呼吸的產能效率比無氧代謝高，因此經過長期演化，成為大多數生物獲取代謝能量的主要方式。</p></div>", "l5": "<div class=\"ex g\"><h4>1-3.3　由原核到真核：核與內質網</h4><p>真核細胞和原核細胞最大的差別是有細胞核。課本提出：<b>原核生物的細胞膜向內凹陷並摺疊</b>，形成許多膜狀構造。</p></div><div class=\"ex\"><h4>讀圖 1－14</h4><ul><li>這些膜狀構造可能<b>包圍住遺傳物質 DNA</b>，演化成具有雙層核膜的真核細胞。</li><li>摺疊的膜同時形成<b>內質網</b>。</li></ul></div><div class=\"ex\"><h4>好處</h4><p>遺傳物質在細胞核內進行複製與轉錄，<b>不容易受細胞質中其他酵素或化學反應干擾</b>，讓遺傳訊息的運作更穩定。</p></div>", "l6": "<div class=\"ex g\"><h4>粒線體、葉綠體的怪特徵</h4><p>除了細胞核，真核細胞還有粒線體；可行光合作用的真核細胞另有葉綠體。這兩種胞器的許多特徵，<b>很像細菌</b>。</p></div><div class=\"ex\"><h4>相似之處</h4><ul><li>粒線體類似<b>好氧性細菌</b>，葉綠體類似<b>藍綠菌</b>。</li><li>兩者都有<b>雙層膜</b>與<b>獨立的 DNA</b>。</li><li>DNA 序列分別與好氧菌、藍綠菌較相似。</li><li>複製方式較像原核細胞，和真核細胞本身的分裂方式不同。</li></ul></div><div class=\"ex\"><h4>這提示了什麼</h4><p>這些相似性暗示它們的祖先可能原本是獨立生活的細菌，這個想法在下一張發展成為內共生假說。</p></div>", "l7": "<div class=\"ex g\"><h4>內共生假說</h4><p>美國生物學家<b>瑪格麗斯</b>提倡內共生假說，用來解釋粒線體與葉綠體的起源。</p></div><div class=\"ex\"><h4>兩個故事</h4><ul><li><b>好氧菌</b>被宿主細胞吞入，經過長久演化轉變為穩定的共生關係，形成<b>粒線體</b>。</li><li><b>藍綠菌</b>被吞入後共生，長期演化成<b>葉綠體</b>。</li></ul></div><div class=\"ex\"><h4>目前的評價</h4><p>這個觀點已被廣為接受，並發展為內共生學說。注意：被吞入的細菌是被「保留」下來與宿主合作，而不是被消化掉。</p></div>", "l8": "<div class=\"ex g\"><h4>真核細胞起源仍是一大謎題</h4><p>真核生物的起源是生物學的一大謎題，科學家提出<b>三種假設路徑</b>（圖 1－15），各自有科學證據與觀點，也為未來研究提供線索。</p></div><div class=\"ex\"><h4>三條路徑的差別，只看「內共生發生的時間」</h4><ul><li><b>路徑 1</b>：粒線體內共生發生在<b>膜狀胞器尚未出現</b>的早期階段。</li><li><b>路徑 2</b>：內共生發生在<b>內膜形成之後</b>。</li><li><b>路徑 3</b>：先有<b>細胞核與內膜系統</b>，之後才發生內共生，演化出真核細胞。</li></ul></div><div class=\"ex\"><h4>三條路最後的結果</h4><p>三條路徑都形成<b>異營真核細胞始祖</b>（含粒線體）；其中再吞入藍綠菌、形成葉綠體的，就成為<b>自營真核細胞始祖</b>。</p></div>", "l9": "<div class=\"ex g\"><h4>假說怎樣變成學說</h4><p>粒線體與葉綠體的起源，最初曾被認為是細胞自身演化的產物。現今科學界已普遍接受內共生假說，並發展為<b>內共生學說</b>。要從假說變成學說，<b>必須依賴充分的科學證據</b>。</p></div><div class=\"ex\"><h4>課本提到的證據</h4><ul><li>粒線體與葉綠體都有<b>雙層膜</b>與<b>獨立的 DNA</b>。</li><li>DNA 序列與好氧菌、藍綠菌較相似。</li><li>複製方式類似原核細胞，與真核細胞的分裂不同。</li></ul></div><div class=\"ex\"><h4>PPT 補充的證據（可當作腦力激盪的參考答案）</h4><ul><li>形態與功能：以分裂方式繁殖、具雙層膜、具環狀 DNA 與 70S 核糖體、對抗生素敏感。</li><li>分子層面：DNA 無內含子、DNA 複製只有一個起始點、缺乏組蛋白、外膜有只有細菌才有的膜孔蛋白等。</li></ul></div>", "l10": "<div class=\"ex g\"><h4>1-3.4　由單細胞到多細胞</h4><p>原始生物是<b>單細胞生物</b>。演化過程中，有些單細胞生物逐漸聚集在一起。</p></div><div class=\"ex\"><h4>走向多細胞的過程</h4><ul><li>依<b>細胞排列位置的差異</b>，各自分工合作，產生不同形態與功能。</li><li>分工讓生物體更有效地利用資源，提高整體的適應能力。</li><li>於是生物逐漸由單細胞演化成多細胞生物。</li></ul></div><div class=\"ex\"><h4>把四條主線串起來</h4><p>異營→自營、無氧→有氧、原核→真核、單細胞→多細胞，每一步都是生物<b>對環境改變的回應</b>，也一步步讓生命形式更多樣。</p></div>"};
 const LEARN=[
  {id:'l1',g:'g1',t:'生命形式的多樣化：四條演化主線',src:'課本 P22｜PPT 第 1–2 頁',fig:[B('s01_04','原 PPT 第 1 頁：本節四個主題')],layout:'single',slides:1,
   pts:['從第一個細胞到現今種類繁多的物種，每個生物都是生命形式多樣化歷史的一部分。','第一個細胞如何形成、如何得到能量、如何形成遺傳密碼仍多屬未知，但化石資料已顯示一些重要事實。','本節四條主線：<b>異營→自營</b>、<b>無氧→有氧</b>、<b>原核→真核</b>、<b>單細胞→多細胞</b>。'],
@@ -509,7 +519,7 @@ function showLearn(i){
   const figs=L.fig.map(f=>`<figure><img src="${ASSETS[f.k]}" alt="${esc(f.cap)}" tabindex="0" data-zoom="${f.k}" data-cap="${esc(f.cap)}"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('');
   el('l-fig').className='lfig '+L.layout;el('l-fig').innerHTML=figs;
   el('l-fig').querySelectorAll('img').forEach(im=>{const open=()=>zoom(ASSETS[im.dataset.zoom],im.dataset.cap);im.onclick=open;im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}}});
-  setTab(0);
+  setTab(TAB===2?2:0);
   let prev='';el('lmenu').innerHTML=LEARN.map((x,j)=>{const h=x.g!==prev?`<p class="mg">${GROUPS[x.g]}</p>`:'';prev=x.g;return h+`<button data-i="${j}" ${j===LI?'aria-current="true"':''}>${ST.read[x.id]?'<span class="rd">✓</span>':''}${j+1}. ${esc(x.t)}</button>`}).join('');
   el('lmenu').querySelectorAll('button').forEach(b=>b.onclick=()=>{el('lmenu').classList.remove('open');showLearn(+b.dataset.i)});
   el('l-pos').textContent=`${LI+1} / ${LEARN.length}`;
@@ -519,13 +529,13 @@ function showLearn(i){
 let TAB=0;
 function setTab(t){
   TAB=t;const L=LEARN[LI];
-  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);
-  if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
+  el('tab0').setAttribute('aria-selected',t===0);el('tab1').setAttribute('aria-selected',t===1);el('tab2').setAttribute('aria-selected',t===2);
+  if(t===2)el('pane').innerHTML=(EXPL[L.id]||'<p>（此張尚無課文講解）</p>')+`<p class="src">依課本內容改寫｜${esc(L.src)}</p>`;else if(t===0)el('pane').innerHTML=`<ul>${L.pts.map(p=>p.startsWith('<table')?`<li style="list-style:none;margin-left:-1.15em">${p}</li>`:`<li>${p}</li>`).join('')}</ul><p class="src">來源：${esc(L.src)}</p>`;
   else{el('pane').innerHTML=`<div class="think"><b>想一想</b>　${esc(L.think)}<br><button class="btn ghost" id="show-ans" style="margin-top:6px;padding:3px 12px;font-size:.88rem">看參考答案</button><div class="ans" id="ans" hidden>${esc(L.ans)}</div></div><label for="note"><b>我的筆記</b></label><textarea class="note" id="note" placeholder="寫下你的想法…">${esc(ST.notes[L.id]||'')}</textarea>`;
     el('show-ans').onclick=()=>{el('ans').hidden=!el('ans').hidden};
     el('note').oninput=e=>{ST.notes[L.id]=e.target.value;save()}}
 }
-el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);
+el('tab0').onclick=()=>setTab(0);el('tab1').onclick=()=>setTab(1);el('tab2').onclick=()=>setTab(2);
 el('l-prev').onclick=()=>showLearn(LI-1);el('l-next').onclick=()=>showLearn(LI+1);
 el('l-home').onclick=()=>{exitFull();navigate('intro')};
 el('l-menu').onclick=()=>el('lmenu').classList.toggle('open');
